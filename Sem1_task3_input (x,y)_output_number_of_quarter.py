@@ -30,5 +30,8 @@ def QuarterNumber(x, y):
         print("3 четверть")
     elif (x > 0 and y <0 ):
         print("4 четверть")
+    elif (x == 0 and y == 0 ):
+        print("Вводимые данные не соответствуют условиям задачи")
+
 
 QuarterNumber(coordinateX, coordinateY)
