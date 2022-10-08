@@ -8,7 +8,6 @@
 
 import math
 
-
 x1 = int(input("Введите координаты X1:  "))
 y1 = int(input("Введите координаты Y1:  "))
 
