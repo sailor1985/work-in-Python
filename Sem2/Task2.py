@@ -5,15 +5,15 @@
 # Создать список, где указанные числа будут стоять на соответствующих индексах,
 # остальные элементы сделать нулевыми, т.е. для индекса 1, значение 1,
 # для индекса 4, значение 4 и т.п.
-#Пример:
-#- Для n = 6: [0,1,0,0,4,0,0,7,0,0,10]
+# Пример:
+# - Для n = 6: [0,1,0,0,4,0,0,7,0,0,10]
 
-num=int(input('Ввидите N: '))  
-num_list=[]                                              
-                              
-for i in range(num+5):        
-    num_list.append(0)        
-    num_list.append(i*3+1)    
-    num_list.append(0)        
-                              
+num = int(input('Ввидите N: '))
+num_list = []
+
+for i in range(num+1):
+    # num_list.append(0)
+    num_list.append(i*3+1)
+    # num_list.append(0)
+
 print(num_list)
