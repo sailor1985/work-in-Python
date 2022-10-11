@@ -12,3 +12,5 @@ for i in range(num+1):
     num_list.append(round((1+1/i)**i, 2))
  
 print(num_list)
+sum = sum(num_list)
+print(sum)
