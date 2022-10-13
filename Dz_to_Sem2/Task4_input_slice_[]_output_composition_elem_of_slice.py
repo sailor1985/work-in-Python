@@ -23,13 +23,21 @@ print("\nСписок чисел: ", num_list_random_sampling)
 while True:
     left_slice = input('Задайте левый срез (индекс списка) : ')
     right_slice = input('Задайте правый срез (индекс списка) : ')
-    if not left_slice.isnumeric() and not right_slice.isnumeric():
-        print("Не корректный ввод данных.Вы ввели не число. Попробуйте снова:: ")
-    elif not len(num_list_random_sampling) <= int(left_slice) < 0 and len(num_list_random_sampling) <= int(right_slice) < 0 :
-        print("Ваше число вне диапазоне. Попробуйте снова")
+    if left_slice == right_slice == "" or not left_slice.isdigit() or not right_slice.isdigit() :
+        print("Введено не число/отрицательное число (меньше 0). Попробуйте еще раз")
+        continue
+    length = int(len(num_list_random_sampling))
+    if int(left_slice) >= length or int(right_slice) >= length:
+        print("Введенное значение левого/правого среза больше длины списка")
+        continue
+    if int(left_slice) > int(right_slice):
+        print("Ошибка: левый срез больше правого. Попробуйте снова")
+        continue   
     else:
-        print("\nЧисла в правильном диапазоне.")
+        left_slice = int(left_slice)
+        right_slice = int(right_slice)
         break
+print("Значения левого/правого среза (индекса списка) введены корректно")
 
 y = slice(left_slice, right_slice + 1)
 print(f"\nC учетом левого среза {left_slice} и правого среза {right_slice} \nИтоговый список чисел: ", num_list_random_sampling[y])
