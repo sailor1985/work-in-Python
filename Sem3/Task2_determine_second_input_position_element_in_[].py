@@ -7,17 +7,18 @@
 # - список: ["123", "234", 123, "567"], ищем: "123", ответ: -1
 # - список: [], ищем: "123", ответ: -1
 
-#           0       1      2      3     4        5
-my_list = ["qwe", "asd", "zxc", "12", "qwe", "ertqwe", ]
-find_str = "qwe"
+#           0       1      2      3       4        5
+my_list = ["йцу", "фыв", "ячс", "цук", "йцукен", "йцу"]
+#my_list = ["йцу", "фыв", "ячс", "цук", "йцукен"]
+find_str = "йцу"
 req_count = 2
-
 count = 0
+
 for i in range(len(my_list)):
     if find_str == my_list[i]:
       count += 1
-      break
+print(f"Всего вхождений искомого элемента списка '{find_str}': {count}")
 if count == req_count:
-    print(i)
-if count <=1:
-    print(-1)
+    print(f"Индекс 2го вхождения искомой строки '{find_str}' списка равен {i}")
+elif count <= 1:
+    print(f"2го вхождения искомой строки '{find_str}' списка НЕТ! ")
