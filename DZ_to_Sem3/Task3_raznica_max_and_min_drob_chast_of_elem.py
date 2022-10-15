@@ -9,6 +9,8 @@
 # В списке могут быть как числа float, так и числа int.
 # Посмотрите на методы числа float, возможно пригодятся.
 
+import math, functools
+
 length = int(input("Введите количество чисел в списке: "))
 num_list= []
 
@@ -17,6 +19,15 @@ for i in range(length):
     num_list.append(element)
 print(f"Заданный список следующий: \n {num_list}")
 
-float_list = list(filter(lambda x: not x % 2 == 0 and not x % 2 == 1, num_list))
+float_list1 = list(filter(lambda x: not x % 2 == 0 and not x % 2 == 1, num_list))
+print(f"Cписок ТОЛЬКО вещественных чисел следующий: \n {float_list1}")
 
-print(f"Cписок ТОЛЬКО вещественных чисел следующий: \n {float_list}")
+float_list2 = list(map(lambda x: round(x % 1, 2), float_list1))
+print(f"Cписок выделенных дробных частей вышеупомянутых вещественных чисел следующий: \n {float_list2}")
+
+max_number = max(float_list2)
+min_number = min(float_list2)
+result = max_number - min_number
+print(f"Максимальное число из списка следующее {max_number}")
+print(f"Минимальное число из списка следующее {min_number}")
+print(f"Разница между максимальным и минимальным числом равна {result}")
