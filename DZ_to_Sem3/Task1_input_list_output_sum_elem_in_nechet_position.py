@@ -1,58 +1,18 @@
-# 1. Задайте список из нескольких чисел. Напишите программу, которая найдёт сумму элементов
-# списка, стоящих на нечётной позиции.
+# 1. Задайте список из нескольких чисел. Напишите программу, которая
+# найдёт сумму элементов списка, стоящих на нечётной позиции.
 # Пример:    
 # [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
 
 length = int(input("Введите количество чисел в списке: "))
 num_list= []
-
+num_list1= []
 for i in range(length):
-    element = int(input("Введите числа списка: "))
+    element = int(input(f"Введите {i+1}-й элемент списка: "))
     num_list.append(element)
+    if not (i % 2 == 0):
+        element1 = num_list[i]
+        num_list1.append(element1)
 print(f"Заданный список следующий: \n {num_list}")
-
- 
-# print(num_list)
-# sum = sum(num_list)
-# print(f"Сумма чисел в последовательности, отображенной выше, равна {sum}")
-
-
-# def Method(numberA):
-#     fact = 1
-#     for i in range(1, numberA + 1):  
-#         fact = fact * i
-#     return fact
-
-
-# Console.WriteLine("Введите число: ");
-# string number = Console.ReadLine()!;
-# int a;
-
-# bool result = int.TryParse(number, out a);
-# if (result)
-# {
-#     Console.WriteLine("Значение числа введено корректно");
-#     int res = 2;
-#     int count = a;
-#     if (count % 2 == 1 & res < count)
-#     {
-#         count--;  
-#         while (count % 2 == 0 & res <= count)
-#         {
-#         }
-#     }
-#     else
-#     {
-#         while (count % 2 == 0 & res <= count)
-#         {
-#             Console.WriteLine(res);
-#             res = res+2;
-#         }     
-#     }
-# }
-# else
-#     {
-#         Console.WriteLine("Некорректный ввод данных");
-#     }        Console.WriteLine(res);
-#              res = res + 2;  
-    
+print(f"Элементы вышеупомянутого списка, стоящие на нечетных позициях, следующие: \n {num_list1}")
+sum = sum(num_list1)
+print(f"Сумма элементов на нечетных позициях: \n {sum}")
