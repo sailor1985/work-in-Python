@@ -6,7 +6,6 @@ num_1 = int(input("Введите первое число: "))
 num_2 = int(input("Введите второе число: "))
 
 i = max(num_1, num_2)
-
 while ((i % num_1 != 0) or (i % num_2 != 0)):
     i += 1    
 print(i)
