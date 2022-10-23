@@ -18,16 +18,16 @@ from random import choice
 print("\nGAME: HUMAN AGAINST COMPUTER\n")
 human_name = input("Введите имя игрока:  ")
 skynet = "великий и всемогущий искусственный интеллект Skynet"
-print(f"\nПривет {human_name}!\n")
-print(f"Против тебя, {human_name}, играет {skynet}\n"
+print(f"\nПривет {human_name.capitalize()}!\n")
+print(f"Против тебя, {human_name.capitalize()}, играет {skynet}\n"
        "\nПрочти внимательно условия игры:\n\n"
-      f"На столе лежит 220 конфет. Ты, {human_name}, и {skynet}\n"
+      f"На столе лежит 220 конфет. Ты, {human_name.capitalize()}, и {skynet}\n"
        "делаете ход друг после друга. Первый ход определяется жеребьёвкой.\n"
        "За один ход можно забрать не более чем 28 конфет\n"
        "Все конфеты оппонента достаются сделавшему последний ход. \n")
 print("Начнем жеребьевку?\n")
 
-while True:   #Проверка коорректности ввода
+while True:   #Проверка коорректности ввода согласия на начало жеребьевки
        answer = input("ДА/НЕТ?: ")
        if answer == "":
               print("\nПустой ввод. Повторите снова:" ) 
@@ -41,7 +41,7 @@ while True:   #Проверка коорректности ввода
        else:
               break
 
-print("\nПОЕХАЛИ!!!!!!\n")
+print("\nУРА!!!!!  ПОЕХАЛИ!!!!!!\n")
 
 player_lst = [human_name, skynet]
 first_start_player = choice(player_lst)
@@ -49,6 +49,14 @@ print("Сейчас начнется жеребьевка за право пер
 print(f"Поздравляем, {first_start_player}, право первого хода предоставлено тебя!\n"
       f"Учти, что за один ход можно забрать не более чем 28 конфет.\n\n"
       "Россия вперед!!!!!!\n")
-quantity = 220
+quantity_candies = 220
 max_quantity_candies = 28
-candy_human_name = int(input(f"{human_name}, сколько конфет забираешь?: "))
+print("Напоминание:\n За один ход можно забрать не более чем 28 конфет \n")
+
+if first_start_player == human_name:
+       candy_human_name = int(input(f"{human_name.capitalize()}, сколько конфет забираешь?: "))
+else:
+       candy_skynet = int(input(f"{skynet.capitalize()}, сколько конфет забираешь?: "))
+
+# for i in quantity_candies:
+
