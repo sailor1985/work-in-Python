@@ -29,4 +29,4 @@ print("\nGAME: HUMAN AGAINST COMPUTER\n")
 print("Начнем жеребьевку?\n")
 correct.correct_input() #Функция проверки коорректности ввода согласия на начало жеребьевки
 
-humans.candy_game_with_2_humans(10) #Функция для игры с конфетами человек против человека.
+humans.candy_game_with_2_humans(220) #Функция для игры с конфетами человек против человека.

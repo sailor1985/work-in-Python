@@ -1,7 +1,7 @@
 def candy_game_with_2_humans(rest_of_candy):
     from random import choice
     import Module_main_block_random_gamer as main
-    gamer_1, gamer_2 = input('Введите имя 1 игрока: '), input('Введите имя 2 игрока: ')
+    gamer_1, gamer_2 = input("Введите имя 1 игрока: "), input("Введите имя 2 игрока: ")
     player_lst = [gamer_1, gamer_2]
     current_gamer = choice(player_lst)
     print("\nСейчас начнется жеребьевка за право первого хода!\n\n"
