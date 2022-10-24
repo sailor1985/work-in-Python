@@ -13,50 +13,30 @@
 # Подумайте об алгоритме игры. Здесь есть ключевые числа количества конфет, которые
 # точно определят победу.
 
-from random import choice
- 
+from random import choice, randint
+import Module_of_first_move_player as player
+import Module_correct_input as correct
+import Module_of_first_move_bot as bot
+
 print("\nGAME: HUMAN AGAINST COMPUTER\n")
-human_name = input("Введите имя игрока:  ")
-skynet = "великий и всемогущий искусственный интеллект Skynet"
-print(f"\nПривет {human_name.capitalize()}!\n")
-print(f"Против тебя, {human_name.capitalize()}, играет {skynet}\n"
-       "\nПрочти внимательно условия игры:\n\n"
-      f"На столе лежит 220 конфет. Ты, {human_name.capitalize()}, и {skynet}\n"
-       "делаете ход друг после друга. Первый ход определяется жеребьёвкой.\n"
-       "За один ход можно забрать не более чем 28 конфет\n"
-       "Все конфеты оппонента достаются сделавшему последний ход. \n")
+# human_name = input("Введите имя игрока:  ")
+# skynet = "великий и всемогущий искусственный интеллект Skynet"
+# print(f"\nПривет {human_name.capitalize()}!\n")
+# print(f"Против тебя, {human_name.capitalize()}, играет {skynet}\n"
+#        "\nПрочти внимательно условия игры:\n\n"
+#       f"На столе лежит 220 конфет. Ты, {human_name.capitalize()}, и {skynet}\n"
+#        "делаете ход друг после друга. Первый ход определяется жеребьёвкой.\n"
+#        "За один ход можно забрать не более чем 28 конфет\n"
+#        "Все конфеты оппонента достаются сделавшему последний ход. \n")
 print("Начнем жеребьевку?\n")
+correct.correct_input() #Функция проверки коорректности ввода согласия на начало жеребьевки
 
-while True:   #Проверка коорректности ввода согласия на начало жеребьевки
-       answer = input("ДА/НЕТ?: ")
-       if answer == "":
-              print("\nПустой ввод. Повторите снова:" ) 
-              continue
-       elif answer.isdigit() or not answer.lower() == "да" :
-              print("\nОшибка. Введите ДА или НЕТ. Попробуйте еще раз:" ) 
-              continue
-       elif answer.lower() == "нет":
-              print("\nОтступать некуда, позади Москва. Вводи скорее ДА!" ) 
-              continue
-       else:
-              break
-
-print("\nУРА!!!!!  ПОЕХАЛИ!!!!!!\n")
-
-player_lst = [human_name, skynet]
-first_start_player = choice(player_lst)
-print("Сейчас начнется жеребьевка за право первого хода!\n")
-print(f"Поздравляем, {first_start_player}, право первого хода предоставлено тебя!\n"
-      f"Учти, что за один ход можно забрать не более чем 28 конфет.\n\n"
+# player_lst = [human_name, skynet]
+# current_player = choice(player_lst)
+print("Сейчас начнется жеребьевка за право первого хода!\n\n"
+     f"Поздравляем, {current_player.capitalize()}, право первого хода предоставлено тебя!\n"
+     f"Учти, что за один ход можно забрать не более чем 28 конфет.\n\n"
       "Россия вперед!!!!!!\n")
-quantity_candies = 220
-max_quantity_candies = 28
-print("Напоминание:\n За один ход можно забрать не более чем 28 конфет \n")
 
-if first_start_player == human_name:
-       candy_human_name = int(input(f"{human_name.capitalize()}, сколько конфет забираешь?: "))
-else:
-       candy_skynet = int(input(f"{skynet.capitalize()}, сколько конфет забираешь?: "))
-
-# for i in quantity_candies:
-
+if current_player.capitalize() == human_name.capitalize(): player.player_first_move(human_name.capitalize(), skynet, 10)
+else: bot.bot_first_move(human_name.capitalize(), skynet, 10)
