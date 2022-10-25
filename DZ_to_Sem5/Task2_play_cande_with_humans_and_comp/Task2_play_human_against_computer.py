@@ -14,19 +14,15 @@
 # точно определят победу.
 
 import Module_candy_game_with_2_humans as humans
+import Module_candy_game_human_against_comp as comp
 import Module_correct_input as correct
 
-print("\nGAME: HUMAN AGAINST COMPUTER\n")
-# human_name = input("Введите имя игрока:  ")
-# skynet = "великий и всемогущий искусственный интеллект Skynet"
-# print(f"\nПривет {human_name.capitalize()}!\n")
-# print(f"Против тебя, {human_name.capitalize()}, играет {skynet}\n"
-#        "\nПрочти внимательно условия игры:\n\n"
-#       f"На столе лежит 220 конфет. Ты, {human_name.capitalize()}, и {skynet}\n"
-#        "делаете ход друг после друга. Первый ход определяется жеребьёвкой.\n"
-#        "За один ход можно забрать не более чем 28 конфет\n"
-#        "Все конфеты оппонента достаются сделавшему последний ход. \n")
+print("\nTHE CANDY GAME\n")
 print("Начнем жеребьевку?\n")
 correct.correct_input() #Функция проверки коорректности ввода согласия на начало жеребьевки
 
+#1. Игра с конфетами: человек против человека
 humans.candy_game_with_2_humans(220) #Функция для игры с конфетами человек против человека.
+
+#2. Игра с конфетами: человек против компьютера
+comp.candy_game_with_comp(220) #Функция для игры с конфетами человек против компьютера.
