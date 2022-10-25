@@ -15,14 +15,17 @@
 
 import Module_candy_game_with_2_humans as humans
 import Module_candy_game_human_against_comp as comp
-import Module_correct_input as correct
+import Module_correct_input_draw as draw
 
 print("\nTHE CANDY GAME\n")
 print("Начнем жеребьевку?\n")
-correct.correct_input() #Функция проверки коорректности ввода согласия на начало жеребьевки
+draw.correct_input() #Функция проверки коорректности ввода согласия на начало жеребьевки
 
 #1. Игра с конфетами: человек против человека
 humans.candy_game_with_2_humans(220) #Функция для игры с конфетами человек против человека.
 
-#2. Игра с конфетами: человек против компьютера
-comp.candy_game_with_comp(220) #Функция для игры с конфетами человек против компьютера.
+#2. Игра с конфетами: человек против бота
+comp.candy_game_with_comp(220) #Функция для игры с конфетами человек против бота.
+
+#3. Игра с конфетами: человек против бота с интеллектом
+
