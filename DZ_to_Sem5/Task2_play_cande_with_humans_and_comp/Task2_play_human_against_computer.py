@@ -13,19 +13,20 @@
 # Подумайте об алгоритме игры. Здесь есть ключевые числа количества конфет, которые
 # точно определят победу.
 
+import Module_correct_input_draw as draw
 import Module_candy_game_with_2_humans as humans
 import Module_candy_game_human_against_comp as comp
-import Module_correct_input_draw as draw
+import Module_candy_game_human_against_comp_with_intelligence as intelligence
 
 print("\nTHE CANDY GAME\n")
 print("Начнем жеребьевку?\n")
 draw.correct_input() #Функция проверки коорректности ввода согласия на начало жеребьевки
 
 #1. Игра с конфетами: человек против человека
-humans.candy_game_with_2_humans(220) #Функция для игры с конфетами человек против человека.
+humans.candy_game_with_2_humans(220)
 
 #2. Игра с конфетами: человек против бота
-comp.candy_game_with_comp(220) #Функция для игры с конфетами человек против бота.
+comp.candy_game_with_comp(220)
 
 #3. Игра с конфетами: человек против бота с интеллектом
-
+intelligence.candy_game_human_against_comp_with_intelligence(220)

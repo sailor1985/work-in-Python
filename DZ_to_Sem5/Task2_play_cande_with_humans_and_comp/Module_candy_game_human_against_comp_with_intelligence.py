@@ -1,7 +1,7 @@
-def candy_game_with_comp(rest_of_candy):
+def candy_game_human_against_comp_with_intelligence(rest_of_candy):
     from random import choice
-    import Module_main_block_gamer_against_comp as main
-    
+    from random import randint
+
     gamer = input("Введите имя игрока: ")
     skynet = "великий и всемогущий искусственный интеллект Skynet"
     player_lst = [gamer, skynet]
@@ -10,8 +10,24 @@ def candy_game_with_comp(rest_of_candy):
      f"Поздравляем, {current_gamer.capitalize()}, право первого хода предоставлено тебе!\n"
      f"Учти, что за один ход можно забрать не более чем 28 конфет.\n\n"
       "Россия вперед!!!!!!\n")
-    if current_gamer.capitalize() == gamer.capitalize():
-        main.main_block_gamer_against_comp(current_gamer.capitalize(), gamer.capitalize(), skynet.capitalize(), rest_of_candy)
-    else:
-        current_gamer.capitalize() == skynet.capitalize()
-        main.main_block_gamer_against_comp(current_gamer.capitalize(), gamer.capitalize(), skynet.capitalize(), rest_of_candy)        
+    
+    while rest_of_candy > 0:
+        print(f"Количество оставшихся конфет: {rest_of_candy}")
+        while True:
+            if current_gamer.capitalize() == gamer.capitalize():
+                remains = int(input(f"Ход игрока {gamer.capitalize()} (1 - 28 конфет): "))
+            else:
+                if rest_of_candy < 29: remains = rest_of_candy
+                else:
+                    division = rest_of_candy // 28
+                    remains = rest_of_candy - ((division*28)+1)
+                while remains > 28 or remains < 1:
+                    remains = randint(1,28)
+                print(f"Ход игрока {skynet.capitalize()} (1 - 28 конфет): {remains}")             
+            if 1 <= remains <= 28:
+                break
+            else: print(f"\nОшибка. {current_gamer.capitalize()}, введи корректное значение количества конфет от 1 до 28. Попробуй еще раз:" )                
+        rest_of_candy -= remains
+        current_gamer = skynet if current_gamer == gamer else gamer
+    if current_gamer == gamer: print(f"Победил {skynet.capitalize()}")
+    else: print(f"Победил {gamer.capitalize()}")
