@@ -1,5 +1,5 @@
-import Module_data_structure_with_PrettyTably as Pretty
-import Module_data_structure_with_Texttable as Text
+import Module_rendering_function_with_Texttable as render
+import Module_data_structure as str
 
-#Pretty.structure_pretty() # либо выбор 1
-Text.structure_text()     # либо выбор 2
+dictinary = str.structure() #Подтянули структуру данных - словарь 
+render.rendering(dictinary) #Запустили функцию отрисовки поля клеток с рандомными значениями: "X", "", "0" 
