@@ -1,4 +1,4 @@
-def structure_pretty():
+def structure_pretty(): # Структура хранения данных и ее случайное заполнение
     from prettytable import PrettyTable
     from random import sample
 
