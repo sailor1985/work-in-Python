@@ -14,10 +14,7 @@ def tic_tac_toe_with_2_players(): #Функция игры 2 игроков
     rendering_list(struct_list())
 
     while number_of_remaining_cells:
-        print(f"Количество свободных клеток: {number_of_remaining_cells}")
         while True:
-            possible_values_lst = ["x", "0"]
-            count = 0
             if current_gamer == gamer_1:
                 value = "x"
                 step = int(input(f"{current_gamer.capitalize()}, ваш ход: "))
@@ -27,15 +24,13 @@ def tic_tac_toe_with_2_players(): #Функция игры 2 игроков
                 step = int(input(f"{current_gamer.capitalize()}, ваш ход: "))
 
             rendering_list(step_maps(struct_list(),step,value))
-            
-            if not value in possible_values_lst:
-                print(f"\nОшибка. {current_gamer.capitalize()}, введите корректное значение: x или 0. Попробуйте еще раз:" )
+
+            #Проверка коорректности ввода номера ячейки
+            if step == "":
+                print("\nПустой ввод. Повторите снова:" ) 
                 continue
             else:
-                count += 1
                 break
-        number_of_remaining_cells -= count
         current_gamer = gamer_2 if current_gamer == gamer_1 else gamer_1
-    print(f"Все свободные клетки закончились")
 
 tic_tac_toe_with_2_players()
