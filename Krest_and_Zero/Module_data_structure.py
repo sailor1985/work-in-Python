@@ -5,7 +5,3 @@ def struct_random_dic(): # Структура хранения данных (с�
     for key in structure_dic:
         structure_dic[key] = choice(["X", "0", ""])
     return structure_dic
-
-def struct_list(): # Структура хранения данных (список) для 2 игроков
-    maps = list(range(1,10))
-    return maps

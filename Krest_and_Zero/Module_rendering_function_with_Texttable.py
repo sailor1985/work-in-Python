@@ -12,8 +12,9 @@ def rendering_list(maps: list): #Функция рисование поля кл
     table = Texttable() 
     table.add_rows([[], maps[:3], maps[3:6], maps[6:9]])
     print(table.draw())
+    return maps
 
-def step_maps(maps,cell_number,symbol): # Функция рисования на поле крестика или нолика,
+def step_maps(maps,cell_number,symbol): # Функция заполнения списка крестиком или ноликом,
                                         # в зависимости от того что в нее передали.
     ind = maps.index(cell_number)
     maps[ind] = symbol
