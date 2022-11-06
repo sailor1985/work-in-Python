@@ -1,5 +1,5 @@
 # import Module_Frontend as F
-from Module_tic_tac_toe_2_players import tic_tac_toe_with_2_players as players
+from Module_tic_tac_toe_2_players import two_players
 
 #Этап 1:
 # 1. Выбрал структуру для хранения данных для поля "крестиков-ноликов" (словарь).
@@ -24,4 +24,4 @@ from Module_tic_tac_toe_2_players import tic_tac_toe_with_2_players as players
 # - Изменение состояния системы, если ход игрока прошел верификацию
 # - Отображение поля с новым состояние и переход хода к следующему игроку.
 
-players()
+two_players()

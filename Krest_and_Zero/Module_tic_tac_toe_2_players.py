@@ -2,7 +2,7 @@ from random import choice
 from Module_rendering_function_with_Texttable import rendering_list, step_maps
 import keyboard
 
-def tic_tac_toe_with_2_players(number_of_cells = 9): #Функция игры 2 игроков
+def two_players(number_of_cells = 9): #Функция игры 2 игроков
     gamer_1, gamer_2 = input("Введите имя 1 игрока (рисует x): "), input("Введите имя 2 игрока (рисует 0): ")
     player_lst = [gamer_1, gamer_2]
     current_gamer = choice(player_lst)
@@ -17,13 +17,13 @@ def tic_tac_toe_with_2_players(number_of_cells = 9): #Функция игры 2 
     rendering_list(maps) # Показываем исходное состояние поля клеток,
                          # используя функцию рисования поля клеток с отображением
                          # текущего состояния
-    
+
     while number_of_cells != 0:
         print(f"Количество оставшихся ячеек: {number_of_cells}")
         valid = False
         count = 0
         print("Чтобы прервать игру нажмите клавишу q, продолжить - пробел: ")
-        if keyboard.read_key() == "q":
+        if keyboard.read_key() == "q": #Функция прерывания игры игроком
             print("Игра прервана игроком")
             break
         while not valid:
@@ -34,7 +34,7 @@ def tic_tac_toe_with_2_players(number_of_cells = 9): #Функция игры 2 
             else: value = "0"
             step = input(f"{current_gamer.capitalize()}, выберите ячейку, в которую хотите поставить ваш знак: ")
 
-            # Проверка корректности ввода номера ячейки (ввод строки, пустого значения, значения не их диапозона от 1 до 9,
+            # Проверка корректности ввода номера ячейки (ввод строки, пустого значения, значения не из диапозона от 1 до 9,
             # а также проверка условия занятости ячейки
             try:
                 step = int(step)
@@ -55,11 +55,5 @@ def tic_tac_toe_with_2_players(number_of_cells = 9): #Функция игры 2 
         rendering_list(maps)  # Показываем очередное текущее состояние поля клеток с учетом введенных ранее символов
         count += 1             
         number_of_cells -= count
-        # current_gamer = gamer_2 if current_gamer == gamer_1 else gamer_1
-
-        if current_gamer == gamer_1:
-            current_gamer = gamer_2
-        else: current_gamer = gamer_1
+        current_gamer = gamer_2 if current_gamer == gamer_1 else gamer_1
     print("Игра завершена")
-
-tic_tac_toe_with_2_players()
