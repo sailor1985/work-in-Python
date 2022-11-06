@@ -15,25 +15,31 @@ def tic_tac_toe_with_2_players(number_of_cells = 9): #Функция игры 2 
         print(f"Количество оставшихся ячеек: {number_of_cells}")
         count = 0
         while True:
-            if current_gamer == gamer_1:
-                value = "x"
-                step = int(input(f"{current_gamer.capitalize()}, выберите ячейку, в которую поставить ваш знак(крестик или нолик): "))
-                rendering_list(step_maps(maps,step,value))
-                count += 1
-            else:
-                value = "0"
-                current_gamer = gamer_2
-                step = int(input(f"{current_gamer.capitalize()}, ваш ход: "))
-                rendering_list(step_maps(maps,step,value))
-                count += 1
-            #Проверка корректности ввода номера ячейки
-            if step == "":
-                print("\nПустой ввод. Повторите снова:" ) 
-                continue
-            else:
-                break
-        number_of_cells -= count
-        current_gamer = gamer_2 if current_gamer == gamer_1 else gamer_1
-        print("Ячейки закончились")
+            if current_gamer == gamer_1: value = "x"
+            else: value = "0"
+            # Проверка корректности ввода номера ячейки
+            valid = False
+            while not valid:
+                step = input(f"{current_gamer.capitalize()}, выберите ячейку, в которую хотите поставить ваш знак: ")
+                try:
+                    step = int(step)
+                except:
+                    print("Некорректный ввод. Вы уверены, что ввели число?")
+                    continue
+                if step >= 1 and step <= 9:
+                    if (str(maps[step-1]) not in "x0"):
+                        maps[step-1] = value
+                        valid = True
+                    else:
+                        print("Эта клеточка уже занята")
+                        continue
+                else:
+                    print("Некорректный ввод. Введите число от 1 до 9 чтобы сделать ход.")
+                    continue
+            rendering_list(step_maps(maps,step,value))
+            count += 1
+            number_of_cells -= count
+            current_gamer = gamer_2 if current_gamer == gamer_1 else gamer_1
+    print("Ячейки закончились")
 
 tic_tac_toe_with_2_players()

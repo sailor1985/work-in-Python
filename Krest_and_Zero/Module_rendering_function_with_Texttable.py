@@ -14,7 +14,8 @@ def rendering_list(maps: list): #Функция рисование поля кл
     print(table.draw())
     return maps
 
-def step_maps(maps,cell_number,symbol): # Функция заполнения списка крестиком или ноликом,
+
+def step_maps(maps: list,cell_number: int,symbol: str): # Функция заполнения списка крестиком или ноликом,
                                         # в зависимости от того что в нее передали.
     ind = maps.index(cell_number)
     maps[ind] = symbol
