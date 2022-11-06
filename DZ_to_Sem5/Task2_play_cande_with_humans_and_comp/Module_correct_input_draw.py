@@ -14,3 +14,5 @@ def correct_input():
         else:
             break
     print("\nУРА!!!!!  ПОЕХАЛИ!!!!!!\n")
+
+correct_input()
