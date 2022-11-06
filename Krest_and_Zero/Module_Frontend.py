@@ -1,7 +1,7 @@
 # Создание frontend модуля: все, что связано с прорисовкой поля
 
 import Module_rendering_function_with_Texttable as render
-import Module_data_structure_dictionary as D
+import Module_data_structure as D
 
 # Этап 1:
 #Вызов функции отрисовки поля клеток, принимающей текущее состояние системы:
