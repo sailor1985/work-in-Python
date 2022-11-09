@@ -6,7 +6,7 @@ def valid_input(current_gamer, maps, value):
         step = input(f"{current_gamer.capitalize()}, выберите ячейку, в которую хотите поставить ваш знак: ")
         try:
             step = int(step)
-        except:
+        except ValueError:
             print("Некорректный ввод. Вы уверены, что ввели число?") 
             continue
         if step >= 1 and step <= 9:
