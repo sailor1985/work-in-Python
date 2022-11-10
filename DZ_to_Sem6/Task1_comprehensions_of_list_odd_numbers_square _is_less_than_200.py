@@ -3,5 +3,5 @@
 
 num_list = [] 
 N = int(input(f"Введите число N:"))
-num_list =[i for i in [i for i in range(N+1)] if i % 2 != 0 and i**2 < 200 ] 
+num_list =[i for i in [i for i in range(N+1)] if i % 2 != 0 and i**2 < 200] 
 print(num_list)
