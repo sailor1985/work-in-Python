@@ -47,3 +47,18 @@
 # Усложнение(необязательно). Добавить еще и использование формата файлов XML или JSON.
 # Можно использовать дополнительные пакеты для их формирования и обработки.
 
+from prettytable import PrettyTable
+
+d1 = {
+  "key1":["val1_1"],
+  "key2":["val2_1"],
+  "key3":["val3_1"],
+  "key4":["val4_1"],
+}
+
+table = PrettyTable()
+
+for key in d1.values():
+  table.add_rows(["Фамилия", "Имя", "Телефон", "Описание"], key)
+
+print(table)
