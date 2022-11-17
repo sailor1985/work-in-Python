@@ -3,10 +3,11 @@ from texttable import Texttable
 from prettytable import PrettyTable
 
 
-def write_to_file(lst: str, filename):  # Запись в текстовый файл. Вход:строка
+def write_to_file(filename: str, data: list, delimiter=","):  # Запись в текстовый файл. Вход:строка
     with open(filename, mode="w", encoding="utf-8") as file:
-        file.write(lst)
-
+        for rec in data:
+            file.write(",".join(rec))
+            file.write(f"\n")
 
 # def rewrite_to_file(string, filename):  # Дозапись в текстовый файл. Вход:строка
 #     with open(filename, mode="a", encoding="utf-8") as file:
@@ -20,7 +21,7 @@ def read_data(filename: str) -> list:  # Чтение из текстового 
 
 
 def create_record(value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание) в строковую переменную
-    value_str = ", ".join(value_tup)
+    value_str = "#".join(value_tup)
     return value_str
 
 

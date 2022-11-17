@@ -3,7 +3,7 @@ import model, view
 #1.Определяем количество записей
 quantity_records = view.quantity_records()
 
-#2. Функция заполнения структуры хранения данных (словарь)
+#2. Функция заполнения записями структуры хранения данных (словарь). Возвращаем список строк со значениями словаря
 def add_records_in_dic(quantity_records: int) -> list:
     dictionary = {}
     for key in range(1, quantity_records + 1):
@@ -12,24 +12,8 @@ def add_records_in_dic(quantity_records: int) -> list:
         print("\n")
     return list(dictionary.values())
 
-#3. Печатаем получившийся список записей
-view.view_data(add_records_in_dic(quantity_records))
+#3. Печатаем получившийся список со строковыми записями
+# view.view_data(add_records_in_dic(quantity_records))
 
-
-# model.write_to_file(value_str, "telephone directory.txt")
-
-
-# def add_records_in_structure():
-#     # Определяем сколько будет записей и вызываем функцию заполнения ими
-#     # структуры хранения данных (словарь)
-#     structure = model.struct_dic(view.quantity_records())
-#     return list(structure.values())
-
-# print(add_records_in_structure())
-
-
-# lst = add_records_in_structure()
-# lst = ['1, 2, 3, 4', '5, 6, 7, 8']
-# view.view_data(str(lst))
-# view.view_data(type(str(lst)))
-# model.write_to_file("Hello world", "telephone directory.txt")
+#4. Записываем в файл записи
+model.write_to_file("telephone directory.txt", add_records_in_dic(quantity_records), delimiter=",")
