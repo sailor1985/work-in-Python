@@ -1,6 +1,4 @@
-import view
 from texttable import Texttable
-from prettytable import PrettyTable
 
 
 def export_to_file(filename: str, data: list, delimiter=","):  # Запись в текстовый файл. Вход:список
@@ -24,7 +22,7 @@ def import_from_file(filename: str) -> list:  # Чтение из текстов
 
 
 def create_record(value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание)
-    # в строковую переменную
+                                             # в строковую переменную
     value_str = ",".join(value_tup)
     return value_str
 
@@ -39,8 +37,7 @@ def parsing_lst_for_table(value_lst: list) -> str:  # Парсинг списк�
     return value_str
 
 
-def rendering_list(value_lst: list):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл
-
+def rendering_list(value_lst: list):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
     table = Texttable()
     maps = [["Фамилия", "Имя", "Телефон", "Описание"]]
     for i in range(0, len(value_lst), 4):
