@@ -12,16 +12,21 @@ def add_records_in_dic() -> list:
 
 #2. Функция экспорта записей в файл и их вывода на экран
 def add_records_in_file():
-    records = add_records_in_dic()
-    model.export_to_file("telephone directory.txt", records, delimiter=",")
+    records_lst = add_records_in_dic()
+    model.export_to_file("telephone directory.txt", records_lst, delimiter=",")
     print("В файл записаны следующие записи:")
-    records_str = model.parsing_lst(records)
+    records_str = model.parsing_lst(records_lst)
+    view.view_data(records_str)
+
+#3. Функция импорта записей из файла и их вывода на экран
+def take_records_from_file():
+    records_lst = model.import_from_file("telephone directory.txt")
+    records_str = model.parsing_lst(records_lst)
+    print("Из файла cчитаны следующие записи:")
     view.view_data(records_str)
 
 
-#4. Считываем из файла записи
-#a = model.import_from_file("telephone directory.txt")
-#view.view_data(a)
+
 
 #5. Добавление записей в файл с уже имеющимися записями
 #model.rewrite_to_file("telephone directory.txt", add_records_in_dic(), delimiter=",")
