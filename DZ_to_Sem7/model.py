@@ -3,27 +3,30 @@ from texttable import Texttable
 from prettytable import PrettyTable
 
 
-def export_to_file(filename: str, data: list, delimiter=","):  # Запись в текстовый файл. Вход:строка
+def export_to_file(filename: str, data: list, delimiter=","):  # Запись в текстовый файл. Вход:список
     with open(filename, mode="w", encoding="utf-8") as file:
         for rec in data:
             file.write("".join(rec))
             file.write(f"\n")
 
-# def rewrite_to_file(string, filename):  # Дозапись в текстовый файл. Вход:строка
-#     with open(filename, mode="a", encoding="utf-8") as file:
-#         file.write(f"{string}\n")
+
+def rewrite_to_file(filename: str, data: list, delimiter=","):  # Дозапись в текстовый файл. Вход:строка
+    with open(filename, mode="a", encoding="utf-8") as file:
+        for rec in data:
+            file.write("".join(rec))
+            file.write(f"\n")
 
 
-def read_data(filename: str) -> list:  # Чтение из текстового файла. Вход:строка. Выход:список
+def import_from_file(filename: str) -> list:  # Чтение из текстового файла. Вход:строка. Выход:список
     with open(filename, "r", encoding="utf-8") as data:
-        a = data.read().split(", ")
+        a = data.read().split()
     return a
 
 
-def create_record(value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание) в строковую переменную
+def create_record(
+        value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание) в строковую переменную
     value_str = ",".join(value_tup)
     return value_str
-
 
 # def rendering_list(dic: dict): #Функция вывода на экран (в консоль) всех записей
 #     table = Texttable()

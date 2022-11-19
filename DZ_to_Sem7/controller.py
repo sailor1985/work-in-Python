@@ -13,6 +13,11 @@ def add_records_in_dic(quantity_records: int) -> list:
     return list(dictionary.values())
 
 #3. Записываем в файл записи
-model.export_to_file("telephone directory.txt", add_records_in_dic(quantity_records), delimiter=",")
+# model.export_to_file("telephone directory.txt", add_records_in_dic(quantity_records), delimiter=",")
 
 #4. Считываем из файла записи
+#a = model.import_from_file("telephone directory.txt")
+#view.view_data(a)
+
+#5. Добавление записей в файл с уже имеющимися записями
+model.rewrite_to_file("telephone directory.txt", add_records_in_dic(quantity_records), delimiter=",")
