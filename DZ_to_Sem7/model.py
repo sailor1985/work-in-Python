@@ -21,8 +21,7 @@ def import_from_file(filename: str) -> list:  # Чтение из текстов
     return a
 
 
-def create_record(value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание)
-                                             # в строковую переменную
+def create_record(value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание) в строковую переменную
     value_str = ",".join(value_tup)
     return value_str
 
@@ -32,7 +31,7 @@ def parsing_lst(value_lst: list) -> str:  # Парсинг списка запи
     return value_str
 
 
-def parsing_lst_for_table(value_lst: list) -> str:  # Парсинг списка записей для таблицы
+def parsing_lst_for_table(value_lst: list) -> str:  # Парсинг списка записей для таблицы Textable
     value_str = ",".join(value_lst)
     return value_str
 
@@ -40,7 +39,7 @@ def parsing_lst_for_table(value_lst: list) -> str:  # Парсинг списк�
 def rendering_list(value_lst: list):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
     table = Texttable()
     maps = [["Фамилия", "Имя", "Телефон", "Описание"]]
-    for i in range(0, len(value_lst), 4):
+    for i in range(0, len(value_lst) - 1, 4):
         maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2], value_lst[i + 3]])
     table.add_rows(maps)
     print(table.draw())
