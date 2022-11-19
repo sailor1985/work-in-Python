@@ -1,5 +1,5 @@
-# import controller as c
+import controller as c
 
-# c.button_click()
+c.add_records_in_file()
 
 

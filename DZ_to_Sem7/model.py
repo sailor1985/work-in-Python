@@ -10,7 +10,7 @@ def export_to_file(filename: str, data: list, delimiter=","):  # Запись в
             file.write(f"\n")
 
 
-def rewrite_to_file(filename: str, data: list, delimiter=","):  # Дозапись в текстовый файл. Вход:строка
+def rewrite_to_file(filename: str, data: list, delimiter=","):  # Дозапись в текстовый файл. Вход:список
     with open(filename, mode="a", encoding="utf-8") as file:
         for rec in data:
             file.write("".join(rec))
@@ -23,9 +23,14 @@ def import_from_file(filename: str) -> list:  # Чтение из текстов
     return a
 
 
-def create_record(
-        value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание) в строковую переменную
+def create_record(value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание)
+                                             # в строковую переменную
     value_str = ",".join(value_tup)
+    return value_str
+
+
+def parsing_lst(value_lst: list) -> str:  # Парсинг списка записей в строку
+    value_str = "\n".join(value_lst)
     return value_str
 
 # def rendering_list(dic: dict): #Функция вывода на экран (в консоль) всех записей
