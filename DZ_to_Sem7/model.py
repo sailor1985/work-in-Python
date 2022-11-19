@@ -47,5 +47,3 @@ def rendering_list(value_lst: list):  # Функция рисование таб
         maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2], value_lst[i + 3]])
     table.add_rows(maps)
     print(table.draw())
-
-# rendering_list(['Иванов', 'Петр', '234324', 'как', 'Петров', 'Иван', '3234', 'кук', 'Сидоров', 'Григорий', '8888', 'паж'], 3)

@@ -40,10 +40,11 @@ def add_records_in_file_print_with_textable() -> list:
     print("В файл записаны следующие записи:")
     records_str = model.parsing_lst_for_table(records_lst)
     records = records_str.split(",")
-    view.view_data(records)
-    view.view_data(type(records))
+    model.rendering_list(records)
 
-add_records_in_file_print_with_textable()
-
-# ['Иванов,Иван,123,Бос', 'Петров,Петр,234,Инженер']
-#records_str = model.parsing_lst(records_lst)
+def take_records_from_file_with_textable():
+    records_lst = model.import_from_file("telephone directory.txt")
+    print("Из файла cчитаны следующие записи:")
+    records_str = model.parsing_lst_for_table(records_lst)
+    records = records_str.split(",")
+    model.rendering_list(records)
