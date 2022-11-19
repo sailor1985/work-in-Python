@@ -24,7 +24,7 @@ def import_from_file(filename: str) -> list:  # Чтение из текстов
 
 
 def create_record(value_tup: tuple) -> str:  # Добавление записи (Фамилия, Имя, Телефон, Описание)
-                                             # в строковую переменную
+    # в строковую переменную
     value_str = ",".join(value_tup)
     return value_str
 
@@ -33,36 +33,19 @@ def parsing_lst(value_lst: list) -> str:  # Парсинг списка запи
     value_str = "\n".join(value_lst)
     return value_str
 
-# def rendering_list(dic: dict): #Функция вывода на экран (в консоль) всех записей
-#     table = Texttable()
-#     # for i in range(len(dic)):
-#     #     table.add_rows([["Фамилия", "Имя", "Телефон", "Описание"], dic[i]])
-#     #     print(table.draw())
-#     #     return dic
 
-#     # for i in dic.values():
-#     #     print(i)
-#     #     table.add_rows([["Фамилия", "Имя", "Телефон", "Описание"], dic.values()])
-#     # print(table.draw())
-#     # return dic
+def parsing_lst_for_table(value_lst: list) -> str:  # Парсинг списка записей для таблицы
+    value_str = ",".join(value_lst)
+    return value_str
 
-#     # table = PrettyTable()
 
-#     for key in dic.values():
-#         print(key)
-#         # table.add_rows(["Фамилия", "Имя", "Телефон", "Описание"], key[0:4])
-#         # print(table.draw())
-#     # print(table)
+def rendering_list(value_lst: list):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл
 
-# print(rendering_list(struct_dic(2)))
+    table = Texttable()
+    maps = [["Фамилия", "Имя", "Телефон", "Описание"]]
+    for i in range(0, len(value_lst), 4):
+        maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2], value_lst[i + 3]])
+    table.add_rows(maps)
+    print(table.draw())
 
-# def rendering_random_dic(dictinary: dict): #Функция рисование поля клеток с отображением
-#                                            #рандомного текущего состояния (frontend в консоли)
-#     lst = list(dictinary.values()) #Вытащили из словаря все значения в список
-#     table = Texttable()
-#     # for i in range(len(lst)):
-#     #     table.add_rows([["Фамилия", "Имя", "Телефон", "Описание"], lst[i][0], lst[i][1], lst[i][2], lst[i][3]])
-#     #     print(table.draw())
-#     print(lst)
-#     print(lst[0][1])
-# rendering_random_dic(struct_dic(2))
+# rendering_list(['Иванов', 'Петр', '234324', 'как', 'Петров', 'Иван', '3234', 'кук', 'Сидоров', 'Григорий', '8888', 'паж'], 3)
