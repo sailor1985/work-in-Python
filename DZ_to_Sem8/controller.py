@@ -1,5 +1,5 @@
 import model, view
-
+import csv
 
 # 1. Функция заполнения записями структуры хранения данных (словарь)
 def add_records_in_dic() -> dict:
@@ -11,8 +11,22 @@ def add_records_in_dic() -> dict:
         print("\n")
     return structure
 
-rec_all = add_records_in_dic()
-view.view_data(rec_all)
+dic_all = add_records_in_dic()
+view.view_data(dic_all)
+dictionary = dic_all
+
+
+#2. READ: Функция импорта из структуры хранения данных (словарь) записи по ID
+def import_rec_from_dic_with_ID(dic_all: dict) -> dict.values:
+    ID = view.input_ID()
+    for key in dic_all.keys():
+        if key == ID:
+            view.view_data(dic_all[ID])
+            break 
+    return dic_all[ID]
+
+import_rec_from_dic_with_ID(dictionary)
+
 
 # 2. Функция экспорта записей в файл и их вывода на экран с помощью Textable
 def add_records_in_file_print_with_textable():

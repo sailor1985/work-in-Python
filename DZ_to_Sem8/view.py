@@ -16,3 +16,6 @@ def add_record_name():
 
 def add_record_class():
     return input("Введите класс: ")
+
+def input_ID():
+    return int(input("Введите ID: "))
