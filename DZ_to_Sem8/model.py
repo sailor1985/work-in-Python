@@ -36,10 +36,20 @@ def parsing_lst_for_table(value_lst: list) -> str:  # Парсинг списк�
     return value_str
 
 
-def rendering_list(value_lst: list):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
+def rendering_list(dic: dict):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
     table = Texttable()
-    maps = [["Фамилия", "Имя", "Телефон", "Описание"]]
-    for i in range(0, len(value_lst) - 1, 4):
-        maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2], value_lst[i + 3]])
+    value_lst = list(dic.values())
+    maps = [["Фамилия", "Имя", "Класс"]]
+    for i in range(0, len(value_lst) - 1, 3):
+        maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2]])
+    table.add_rows(maps)
+    print(table.draw())
+
+
+def rendering_dic_ID(dic: dict):  # Функция рисование таблицы с конкретной записью (по ID)
+                                  # на экране консоли с помощью textable
+    table = Texttable()
+    value_lst = list(dic.values())
+    maps = [["last_name", "first_name", "clas"], value_lst[:3]]
     table.add_rows(maps)
     print(table.draw())

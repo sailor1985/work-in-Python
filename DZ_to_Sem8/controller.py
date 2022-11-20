@@ -11,21 +11,22 @@ def add_records_in_dic() -> dict:
         print("\n")
     return structure
 
-dic_all = add_records_in_dic()
-view.view_data(dic_all)
-dictionary = dic_all
+# dic_all = add_records_in_dic()
+# view.view_data(dic_all)
+# dictionary = dic_all
 
-
-#2. READ: Функция импорта из структуры хранения данных (словарь) записи по ID
-def import_rec_from_dic_with_ID(dic_all: dict) -> dict.values:
+#2. READ: Функция импорта из структуры хранения данных (словарь) записи по ID и вывода в консоль
+# с помощью textable
+def import_rec_from_dic_with_ID(dic_all: dict) -> dict:
     ID = view.input_ID()
     for key in dic_all.keys():
         if key == ID:
-            view.view_data(dic_all[ID])
+            val = dic_all[ID]
+            model.rendering_dic_ID(val)
             break 
-    return dic_all[ID]
+    return val
 
-import_rec_from_dic_with_ID(dictionary)
+# import_rec_from_dic_with_ID(dictionary)
 
 
 # 2. Функция экспорта записей в файл и их вывода на экран с помощью Textable
