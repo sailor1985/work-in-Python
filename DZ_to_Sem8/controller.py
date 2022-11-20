@@ -1,18 +1,18 @@
 import model, view
 
 
-# 1. Функция заполнения записями структуры хранения данных (словарь). Возвращает список строк со значениями словаря
-def add_records_in_dic() -> list:
-    quantity_records = view.quantity_records()  # Определяем количество добавляемых записей
-    dictionary = dict.fromkeys(['last_name', 'first_name', 'class'], "")
+# 1. Функция заполнения записями структуры хранения данных (словарь)
+def add_records_in_dic() -> dict:
+    quantity_records = view.quantity_records()
+    structure = {}
     for key in range(1, quantity_records + 1):
-        #record_tup = view.add_record_surname(), view.add_record_name(), view.add_record_class()
-        dictionary[key] = model.create_record(view.add_record_surname(), view.add_record_name(), view.add_record_class())
+        last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
+        structure[key] = model.create_record(last_name, first_name, clas)
         print("\n")
-    return list(dictionary.values())
-    # return dictionary
+    return structure
 
-view.view_data(model.create_record(view.add_record_surname(), view.add_record_name(), view.add_record_class()))
+rec_all = add_records_in_dic()
+view.view_data(rec_all)
 
 # 2. Функция экспорта записей в файл и их вывода на экран с помощью Textable
 def add_records_in_file_print_with_textable():

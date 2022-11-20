@@ -25,14 +25,6 @@ def create_record(last_name: str, first_name: str, clas: str) -> dict:
     dictionary = {'last_name':last_name, 'first_name':first_name, 'class':clas}
     return dictionary
 
-# Заполнение записями структуры хранения данных (словарь)
-def add_records_in_dic(quantity_records: int, dictionary: dict) -> dict:
-    structure = {}
-    for key in range(1, quantity_records + 1):
-        structure[key] = dictionary
-        print("\n")
-    return structure
-
 
 def parsing_lst(value_lst: list) -> str:  # Парсинг списка записей в строку
     value_str = "\n".join(value_lst)
