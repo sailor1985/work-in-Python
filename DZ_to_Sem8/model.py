@@ -8,6 +8,14 @@ def export_to_file(filename: str, data: dict, delimiter=","):
             file.write(",".join(rec.values()))
             file.write(f"\n")
 
+# Запись в текстовый файл последнего ID словаря. Вход: словарь
+def export_ID_to_file(filename: str, data: dict, delimiter=","):
+    with open(filename, mode="w", encoding="utf-8") as file:
+        one, two = data.popitem()
+        file.write(str(one))
+
+dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил', 'class': '11А'}, 2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '3В'}}
+export_ID_to_file("Id.txt", dictionary, delimiter=",")
 
 # Дозапись в текстовый файл. Вход:список
 def rewrite_to_file(filename: str, data: list, delimiter=","):
