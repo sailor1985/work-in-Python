@@ -1,11 +1,11 @@
 from texttable import Texttable
 
 
-# Запись в текстовый файл. Вход:список
-def export_to_file(filename: str, data: list, delimiter=","):
+# Запись в текстовый файл. Вход: словарь
+def export_to_file(filename: str, data: dict, delimiter=","):
     with open(filename, mode="w", encoding="utf-8") as file:
-        for rec in data:
-            file.write("".join(rec))
+        for rec in data.values():
+            file.write(",".join(rec.values()))
             file.write(f"\n")
 
 
@@ -29,15 +29,8 @@ def create_record(last_name: str, first_name: str, clas: str) -> dict:
     dictionary = {'last_name': last_name, 'first_name': first_name, 'class': clas}
     return dictionary
 
-def add_records_in_dic(quantity_records: int, last_name: str, first_name: str, clas: str) -> dict:
-    structure = {}
-    for key in range(1, quantity_records + 1):
-        structure[key] = create_record(last_name, first_name, clas)
-        print("\n")
-    return structure
 
-
-# Функция импорта из словаря записи по ID и вывода в консоль
+# Функция импорта из словаря записи по ID и вывода в консоль с помощью textable
 def import_rec_from_dic_with_ID(db: dict, rec_ID: int) -> dict:
     for key in db.keys():
         if key == rec_ID:
