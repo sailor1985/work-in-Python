@@ -1,6 +1,9 @@
 def view_data(data):
     print(data)
 
+def view_ID():
+    print("Неверный ID")
+
 
 def quantity_records():
     return int(input("Сколько создаем записей? "))
