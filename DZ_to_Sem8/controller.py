@@ -10,11 +10,13 @@ def add_records_in_dic() -> dict:
         last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
         structure[key] = model.create_record(last_name, first_name, clas)
         print("\n")
-    return model.rendering_list(structure)
+    model.rendering_list(structure)
+    return structure
 
 
 # 2. WRITE: Экспорт в данных в csv файл и последнего ID словаря в файл Id.txt
-def export_to_csv_file(dictionary):
+def export_to_csv_file():
+    dictionary = add_records_in_dic()
     model.export_to_file("list_of_students.csv", dictionary, delimiter=",")
     model.export_ID_to_file("Id.txt", dictionary, delimiter=",")
 

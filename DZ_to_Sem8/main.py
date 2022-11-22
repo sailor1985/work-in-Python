@@ -1,14 +1,17 @@
 import  controller as c
 
-# 1. CREATE
-c.add_records_in_dic()
+# Для вызова той или иной функции комментируем те, которые не нужны
 
-# На следующей строчке результат - CREATE: словарь dictionary. Раскомментировать строчку 7 для использования в READ,UPDATE,DELETE
-dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил', 'class': '11А'},
-              2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '3В'}}
+# 1. CREATE
+#c.add_records_in_dic()
+
+# На следующей строчке результат - CREATE: словарь dictionary. Раскомментировать строчки 9-10 для использования в READ,UPDATE,DELETE
+# dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
+#                2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
+#                3: {'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'} }
 
 # 2. WRITE
-# c.export_to_csv_file(dictionary)
+#c.export_to_csv_file()
 
 # 3. READ
 # c.import_ID(dictionary)
@@ -20,4 +23,4 @@ dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил',
 # c.delete_rec_ID(dictionary)
 
 # 7. Импорт из CSV файла без ID
-# c.import_from_csv_file()
+#c.import_from_csv_file()
