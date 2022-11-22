@@ -8,4 +8,7 @@ dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил',
               2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '3В'}}
 
 # 2. WRITE
-c.write_to_csv_file()
+# c.write_to_csv_file()
+
+# 3. READ
+c.import_ID()
