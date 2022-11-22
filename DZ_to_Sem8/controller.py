@@ -41,10 +41,12 @@ def update_rec_ID():
     else: view.view_ID()
 
 # 5. DELETE: Удалить запись по ID
-# rec_ID = view.input_ID()
-# if rec_ID in dictionary:
-#     view.view_data(model.delete_record(dictionary, rec_ID))
-# else: view.view_ID()
+def delete_rec_ID():
+    rec_ID = view.input_ID()
+    if rec_ID in dictionary:
+         dic = model.delete_record(dictionary, rec_ID)
+         model.rendering_list(dic)
+    else: view.view_ID()
 
 # 6. - Импорт из CSV файла с ID. Использовать пакет csv стандартной библиотеки.
 # Пример:

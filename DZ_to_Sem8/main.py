@@ -14,4 +14,7 @@ dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил',
 # c.import_ID()
 
 #4. UPDATE
-c.update_rec_ID()
+# c.update_rec_ID()
+
+#5. DELETE
+c.delete_rec_ID()
