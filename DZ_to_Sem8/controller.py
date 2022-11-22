@@ -13,14 +13,15 @@ def add_records_in_dic() -> dict:
         print("\n")
     return view.view_data(structure)
 
-
-# 2. WRITE: Экспорт в данных в csv файл и последнего ID словаря в файл Id.txt
-# model.export_to_file("list_of_students.csv", dictionary, delimiter=",")
-# model.export_ID_to_file("Id.txt", dictionary, delimiter=",")
-
-# На следующей строчке результат - CREATE: словарь dictionary. Раскомментировать строчку 21 для использования в READ,UPDATE,DELETE
+# На следующей строчке результат - CREATE: словарь dictionary. Раскомментировать строчку 17 для использования в READ,UPDATE,DELETE
 dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил', 'class': '11А'},
               2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '3В'}}
+
+# 2. WRITE: Экспорт в данных в csv файл и последнего ID словаря в файл Id.txt
+def write_to_csv_file():
+    model.export_to_file("list_of_students.csv", dictionary, delimiter=",")
+    model.export_ID_to_file("Id.txt", dictionary, delimiter=",")
+
 
 # 4. READ: Извлечение записи по ID из словаря и вывод в консоль с помощью textable
 # rec_ID = view.input_ID()
