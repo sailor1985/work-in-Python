@@ -31,13 +31,14 @@ def import_ID():
         view.view_ID()
 
 # 4. UPDATE: Обновление записи по ID и вывод в консоль с помощью textable обновленного словаря
-# last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
-# new_record = model.create_record(last_name, first_name, clas)
-# rec_ID = view.input_ID()
-# if rec_ID in dictionary:
-# dic = model.update_record(dictionary, new_record, rec_ID)
-# model.rendering_list(dic)
-# else: view.view_ID()
+def update_rec_ID():
+    last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
+    new_record = model.create_record(last_name, first_name, clas)
+    rec_ID = view.input_ID()
+    if rec_ID in dictionary:
+        dic = model.update_record(dictionary, new_record, rec_ID)
+        model.rendering_list(dic)
+    else: view.view_ID()
 
 # 5. DELETE: Удалить запись по ID
 # rec_ID = view.input_ID()

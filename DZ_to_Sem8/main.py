@@ -11,4 +11,7 @@ dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил',
 # c.write_to_csv_file()
 
 # 3. READ
-c.import_ID()
+# c.import_ID()
+
+#4. UPDATE
+c.update_rec_ID()
