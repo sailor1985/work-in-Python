@@ -18,7 +18,7 @@ dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил',
               2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '3В'}}
 
 # 2. WRITE: Экспорт в данных в csv файл и последнего ID словаря в файл Id.txt
-def write_to_csv_file():
+def export_to_csv_file():
     model.export_to_file("list_of_students.csv", dictionary, delimiter=",")
     model.export_ID_to_file("Id.txt", dictionary, delimiter=",")
 
@@ -48,11 +48,12 @@ def delete_rec_ID():
          model.rendering_list(dic)
     else: view.view_ID()
 
-# 6. - Импорт из CSV файла с ID. Использовать пакет csv стандартной библиотеки.
+# 6. Импорт из CSV файла с ID. Использовать пакет csv стандартной библиотеки.
 # Пример:
 # 1#Сидоров#Алексей#9А
 # 2#Соколов#Григорий#9А
 # Данные в БД добавляются, считаем, что уникальность реализуется с помощью ID.
 
 # 7. Импорт из CSV файла без ID
-# model.import_from_csv_without_ID("list_of_students.csv")
+def import_from_csv_file():
+    model.import_from_csv_without_ID("list_of_students.csv")

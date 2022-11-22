@@ -8,7 +8,7 @@ dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил',
               2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '3В'}}
 
 # 2. WRITE
-# c.write_to_csv_file()
+# c.export_to_csv_file()
 
 # 3. READ
 # c.import_ID()
@@ -17,4 +17,7 @@ dictionary = {1: {'last_name': 'Гончаров', 'first_name': 'Михаил',
 # c.update_rec_ID()
 
 #5. DELETE
-c.delete_rec_ID()
+# c.delete_rec_ID()
+
+# 7. Импорт из CSV файла без ID
+c.import_from_csv_file()
