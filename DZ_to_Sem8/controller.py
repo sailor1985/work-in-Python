@@ -14,8 +14,8 @@ def add_records_in_dic() -> dict:
     return structure
 
 
-# 2. WRITE: Экспорт в данных в csv файл и последнего ID словаря в файл Id.txt
-def export_to_csv_file():
+# 2. WRITE: Экспорт словаря с созданными записями в csv файл и последнего  его ID в файл Id.txt
+def export_add_records_of_dic_to_csv_file():
     dictionary = add_records_in_dic()
     model.export_to_file("list_of_students.csv", dictionary, delimiter=",")
     model.export_ID_to_file("Id.txt", dictionary, delimiter=",")
@@ -58,5 +58,8 @@ def delete_rec_ID(dictionary):
 # Данные в БД добавляются, считаем, что уникальность реализуется с помощью ID.
 
 # 7. Импорт из CSV файла без ID
-def import_from_csv_file():
-    model.import_from_csv_without_ID("list_of_students.csv")
+# def import_from_csv_file():
+# a= model.import_from_csv_without_ID("list_of_students.csv")
+# print(a.split(","))
+
+# import_from_csv_file()

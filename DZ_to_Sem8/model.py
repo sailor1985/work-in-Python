@@ -7,7 +7,7 @@ def export_to_file(filename: str, data: dict, delimiter=","):
     with open(filename, mode="w", encoding="utf-8") as file:
         for rec in data.values():
             file.write(",".join(rec.values()))
-            file.write(f"\n")
+            file.write(f",\n")
 
 
 # Запись в текстовый файл последнего ID словаря. Вход: словарь
@@ -80,11 +80,52 @@ def import_from_csv_without_ID(filename: str):  # Функция импорта 
     with open(filename, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
-            print(','.join(row))
+            a = ''.join(row)
+            # b = a.split()
+            print(a)
+        # print(type(a))
+        return a
 
 
 def import_from_csv_with_ID(filename: str):  # Функция импорта из csv файла (c ID)
     with open(filename, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
         for row in reader:
-            print(','.join(row))
+            a = ','.join(row)
+            b = a.split()
+            print(b)
+        return b
+
+# val = import_from_csv_without_ID("list_of_students.csv")
+#print(import_from_csv_without_ID("list_of_students.csv"))
+# a= import_from_csv_without_ID("list_of_students.csv")
+# print(a)
+# def import_from_file("list_of_students.csv"):
+#     with open("list_of_students.csv", "r", encoding="utf-8") as data:
+#         a = data.read().split()
+#     return a
+
+def parsing_lst(value_lst: list) -> str:  # Парсинг списка записей в строку
+    value_str = ",".join(value_lst)
+    return value_str
+
+# print(parsing_lst(val))
+def import_from_file(filename: str):
+    with open(filename, "r", encoding="utf-8") as f:
+    #with open("list_of_students.csv", "r") as f:
+        reader = csv.reader(f, delimiter="\t")
+        for i, line in enumerate(reader):
+            print('line[{}] = {}'.format(i, line))
+    return i, line
+
+import_from_file("list_of_students.csv")
+
+def add_records_in_dic() -> dict:
+    quantity_records = view.quantity_records()
+    structure = {}
+    for key in range(1, quantity_records + 1):
+        last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
+        structure[key] = model.create_record(last_name, first_name, clas)
+        print("\n")
+    model.rendering_list(structure)
+    return structure
