@@ -39,7 +39,7 @@ def create_record(last_name: str, first_name: str, clas: str) -> dict:
 
 #Функция получения списка словарей, являющимися значениями для ключей (ID), для создания в дальнейшем
 # словаря словарей, импортированного из файла
-def create_rec(data:list) -> list:
+def values_from_import_csv_file_to_create_dic(data:list) -> list:
     num_lst =[]
     for i in range(0, len(data), 3):
         num_lst.append(create_record(data[i], data[i+1], data[i+2]))
@@ -102,7 +102,8 @@ def parsing_lst_lst(val: list) -> list:  # Парсинг списка спис�
     return val_lst
 #print(parsing_lst_lst(value_list))
 val = parsing_lst_lst(value_list)
-print(create_rec(val))
+val_csv = values_from_import_csv_file_to_create_dic(val)
+print(values_from_import_csv_file_to_create_dic(val))
 def import_from_file(filename: str):
     with open(filename, "r", encoding="utf-8") as f:
     #with open("list_of_students.csv", "r") as f:
@@ -119,32 +120,14 @@ def add_records_in_import_dic(db: dict, rec_ID:int, data:list, mapping: dict) ->
 # data = import_from_csv_without_ID("list_of_students.csv")
 # dictionary = {'last_name': "last_name", 'first_name': "first_name", 'class': "clas"}
 # print(add_records_in_dic(data, dictionary))
+
+#Функция заполнения БД (словаря словарей) записями с присвоением ID (ключей) из импортированного файла csv без ID
 def create_dic_from_import_csv_file(data:list) -> dict:
     db ={}
-    length_dic_keys = int(len(data)/3)
-    # for key in range(1, length_dic_keys + 1):
-        # last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
-        #for key in range(0, len(data), 3):
-
-            #db[key] = create_record(last_name, first_name, clas)
-
-
-
-        # for key in range(0, len(data), 3):
-        #     db[key] = create_record(data[key], data[key+1], data[key+2])
-
-    for key in range(1, length_dic_keys + 1):
-        db[key] = {name: value for name, value in zip(mapping.keys(), data)}
-    # for key in range(1, length_dic_keys + 1):
-    # for key in range(1, length_dic_keys + 1):
-    #     db[key] = create_record(data[key-1], data[key], data[key+1])
-        mapping.keys()
+    for i, dic in enumerate(data, 1):
+        db[i] = dic
     rendering_list(db)
     return db
-# mapping = {'last_name': "last_name", 'first_name': "first_name", 'class': "clas"}
-# dictionary = {'last_name': "last_name", 'first_name': "first_name", 'class': "clas"}
-# print(create_dic_from_import_csv_file(val))
 
-#for key in range(1, length_dic_keys + 1):
-    #db[key] = {name: value for name, value in zip(mapping.keys(), data[key:3])}
+print(create_dic_from_import_csv_file(val_csv))
 
