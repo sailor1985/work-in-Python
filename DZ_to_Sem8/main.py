@@ -20,4 +20,4 @@ import  controller as c
 # c.delete_rec_ID(dictionary)
 
 # 5. Импорт из CSV файла без ID
-# c.import_from_csv_file()
+c.import_from_csv_file_without_ID()

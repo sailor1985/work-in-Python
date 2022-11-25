@@ -59,5 +59,10 @@ def delete_rec_ID(dictionary):
 # add_records_in_dic(db: dict, rec_ID:int, data:list, mapping: dict)
 
 # 7. Импорт из CSV файла без ID
+def import_from_csv_file_without_ID():
+    value_list = model.import_from_csv_without_ID("list_of_students.csv")
+    val = model.parsing_lst_lst(value_list)
+    val_csv = model.values_from_import_csv_file_to_create_dic(val)
+    view.view_data(model.create_dic_from_import_csv_file(val_csv))
 
 
