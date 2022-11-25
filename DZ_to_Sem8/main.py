@@ -3,7 +3,7 @@ import  controller as c
 # Для вызова той или иной функции комментируем те, которые не нужны
 
 # 1. CREATE
-c.export_add_records_of_dic_to_csv_file()
+#c.export_add_records_of_dic_to_csv_file()
 
 # На следующей строчке результат - CREATE: словарь dictionary. Раскомментировать строчки 9-11 для использования в READ,UPDATE,DELETE
 # dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},

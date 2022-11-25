@@ -56,10 +56,8 @@ def delete_rec_ID(dictionary):
 # 1#Сидоров#Алексей#9А
 # 2#Соколов#Григорий#9А
 # Данные в БД добавляются, считаем, что уникальность реализуется с помощью ID.
+# add_records_in_dic(db: dict, rec_ID:int, data:list, mapping: dict)
 
 # 7. Импорт из CSV файла без ID
-# def import_from_csv_file():
-# a= model.import_from_csv_without_ID("list_of_students.csv")
-# print(a.split(","))
 
-# import_from_csv_file()
+

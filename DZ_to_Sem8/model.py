@@ -7,7 +7,7 @@ def export_to_file(filename: str, data: dict, delimiter=","):
     with open(filename, mode="w", encoding="utf-8") as file:
         for rec in data.values():
             file.write(",".join(rec.values()))
-            file.write(f",\n")
+            file.write(f"\n")
 
 
 # Запись в текстовый файл последнего ID словаря. Вход: словарь
@@ -31,7 +31,7 @@ def import_from_file(filename: str) -> list:
         a = data.read().split()
     return a
 
-
+# print(import_from_file("list_of_students.csv")) ['Иванов,Иван,1В', 'Петров,Петр,4К', 'Сергеев,Серж,5Е']
 # Функция cоздания записи (Фамилия, Имя, Класс) в виде словаря
 def create_record(last_name: str, first_name: str, clas: str) -> dict:
     dictionary = {'last_name': last_name, 'first_name': first_name, 'class': clas}
@@ -57,6 +57,14 @@ def delete_record(db: dict, rec_ID: int):
     return db
 
 
+# dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
+#                2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
+#                3: {'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'} }
+#
+# for rec in list(dictionary.values()):
+#     val = ",".join(rec.values()).split(",")
+#     print(val)
+# print(list(dictionary.values()))
 def rendering_list(dic: dict):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
     table = Texttable()
     maps = [["Фамилия", "Имя", "Класс"]]
@@ -65,7 +73,7 @@ def rendering_list(dic: dict):  # Функция рисование таблиц
         maps.append(val)
     table.add_rows(maps)
     print(table.draw())
-
+# rendering_list(dictionary)
 
 def rendering_dic_ID(dic: dict):  # Функция рисование таблицы с конкретной записью (по ID)
     # на экране консоли с помощью textable
@@ -76,16 +84,35 @@ def rendering_dic_ID(dic: dict):  # Функция рисование табли
     print(table.draw())
 
 
-def import_from_csv_without_ID(filename: str):  # Функция импорта из csv файла (без ID)
+def import_from_csv_without_ID(filename: str) -> list:  # Функция импорта из csv файла (без ID)
     with open(filename, "r", encoding="utf-8") as f:
         reader = csv.reader(f)
-        for row in reader:
-            a = ''.join(row)
-            # b = a.split()
-            print(a)
-        # print(type(a))
-        return a
+        data = list(reader)
+    return data
+# print(import_from_csv_without_ID("list_of_students.csv"))
 
+value_list = [['Иванов', 'Иван', '1В'], ['Петров', 'Петр', '4К'], ['Сергеев', 'Серж', '5Е']]
+def parsing_lst_lst(val: list) -> list:  # Парсинг списка списков в список строк
+    values = ",".join(",".join(v) for v in val)
+    val_lst = values.split(",")
+    return val_lst
+
+print(parsing_lst_lst(value_list))
+
+
+
+print(parsing_lst_lst(value_list))
+
+# values = ",".join(",".join(v) for v in value_list)
+# val_lst = values.split(",")
+# print(val_lst)
+# print(type(val_lst))
+def parsing_lst(value_lst: list) -> str:  # Парсинг списка записей в строку
+    value_str = ",".join(value_lst)
+    return str(value_str)
+
+# a = import_from_csv_without_ID("list_of_students.csv")
+# print(parsing_lst(a))
 
 def import_from_csv_with_ID(filename: str):  # Функция импорта из csv файла (c ID)
     with open(filename, "r", encoding="utf-8") as f:
@@ -96,18 +123,14 @@ def import_from_csv_with_ID(filename: str):  # Функция импорта и�
             print(b)
         return b
 
-# val = import_from_csv_without_ID("list_of_students.csv")
-#print(import_from_csv_without_ID("list_of_students.csv"))
-# a= import_from_csv_without_ID("list_of_students.csv")
-# print(a)
-# def import_from_file("list_of_students.csv"):
-#     with open("list_of_students.csv", "r", encoding="utf-8") as data:
-#         a = data.read().split()
-#     return a
+# print(import_from_csv_with_ID("list_of_students.csv"))
+#
+# ['Иванов,Иван,1В']
+# ['Петров,Петр,4К']
+# ['Сергеев,Серж,5Е']
+# ['Сергеев,Серж,5Е']
 
-def parsing_lst(value_lst: list) -> str:  # Парсинг списка записей в строку
-    value_str = ",".join(value_lst)
-    return value_str
+
 
 # print(parsing_lst(val))
 def import_from_file(filename: str):
@@ -116,11 +139,17 @@ def import_from_file(filename: str):
         reader = csv.reader(f, delimiter="\t")
         for i, line in enumerate(reader):
             print('line[{}] = {}'.format(i, line))
-    return i, line
+            return i, line
 
-import_from_file("list_of_students.csv")
+#добавляем запись в импортированный словарь
+def add_records_in_dic(db: dict, rec_ID:int, data:list, mapping: dict) -> dict:
+        db[rec_ID] = {name:value for name, value in zip(mapping.keys(),data)}
+        return db
 
-def add_records_in_dic() -> dict:
+# data = import_from_csv_without_ID("list_of_students.csv")
+# dictionary = {'last_name': "last_name", 'first_name': "first_name", 'class': "clas"}
+# print(add_records_in_dic(data, dictionary))
+def import_dic_from_csv_file() -> dict:
     quantity_records = view.quantity_records()
     structure = {}
     for key in range(1, quantity_records + 1):
