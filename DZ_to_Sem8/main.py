@@ -1,9 +1,9 @@
-import  controller as c
+import controller as c
 
 # Для вызова той или иной функции комментируем те, которые не нужны
 
 # 1. CREATE
-#c.export_add_records_of_dic_to_csv_file()
+# c.export_add_records_of_dic_to_csv_file()
 
 # На следующей строчке результат - CREATE: словарь dictionary. Раскомментировать строчки 9-11 для использования в READ,UPDATE,DELETE
 # dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
@@ -19,5 +19,8 @@ import  controller as c
 # 4. DELETE
 # c.delete_rec_ID(dictionary)
 
-# 5. Импорт из CSV файла без ID
-c.import_from_csv_file_without_ID()
+# 5. Импорт из CSV файла без ID и наполнение БД
+# c.import_from_csv_file_without_ID()
+
+# 6. Добавление записи (Фамилия, Имя, Класс) в импортированный словарь по ID
+#c.add_rec_ID_to_dic(c.import_from_csv_file_without_ID())

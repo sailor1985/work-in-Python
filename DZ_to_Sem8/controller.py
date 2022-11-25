@@ -14,11 +14,12 @@ def add_records_in_dic() -> dict:
     return structure
 
 
-# 2. WRITE: Экспорт словаря с созданными записями в csv файл и последнего  его ID в файл Id.txt
+# 2. WRITE: Экспорт словаря с созданными записями в csv файл без ID
+# и последней "ID" записи в файл Id.txt
 def export_add_records_of_dic_to_csv_file():
     dictionary = add_records_in_dic()
     model.export_to_file("list_of_students.csv", dictionary, delimiter=",")
-    model.export_ID_to_file("Id.txt", dictionary, delimiter=",")
+    #model.export_ID_to_file("Id.txt", dictionary, delimiter=",")
 
 
 # 3. READ: Извлечение записи по ID из словаря и вывод в консоль с помощью textable
@@ -35,7 +36,7 @@ def update_rec_ID(dictionary):
     new_record = model.create_record(last_name, first_name, clas)
     rec_ID = view.input_ID()
     if rec_ID in dictionary:
-        dic = model.update_record(dictionary, new_record, rec_ID)
+        dic = model.add_record(dictionary, new_record, rec_ID)
         model.rendering_list(dic)
     else:
         view.view_ID()
@@ -51,18 +52,36 @@ def delete_rec_ID(dictionary):
         view.view_ID()
 
 
-# 6. Импорт из CSV файла с ID. Использовать пакет csv стандартной библиотеки.
+# 6. Импорт из CSV файла без ID и наполнение БД
+def import_from_csv_file_without_ID():
+    value_list = model.import_from_csv_without_ID("list_of_students.csv")
+    val = model.parsing_lst_lst(value_list)
+    val_csv = model.values_from_import_csv_file_to_create_dic(val)
+    db = model.create_dic_from_import_csv_file(val_csv)
+    view.view_data(db)
+    return db
+
+# 7. Добавление записи (Фамилия, Имя, Класс) в импортированный словарь по ID
+def add_rec_ID_to_dic(dictionary):
+    last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
+    new_record = model.create_record(last_name, first_name, clas)
+    rec_ID = view.input_ID()
+    last_ID = model.import_ID_from_file("Id.txt")
+    if rec_ID == last_ID + 1:
+        dic = model.add_record(dictionary, new_record, rec_ID)
+        model.rendering_list(dic)
+    else:
+        view.view_ID()
+
+#dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1В'}, 2: {'last_name': 'Петров', 'first_name': 'Петр', 'class': '4К'}, 3: {'last_name': 'Сергеев', 'first_name': 'Серж', 'class': '5Е'}}
+
+
+
+# 7. Импорт из CSV файла с ID. Использовать пакет csv стандартной библиотеки.
 # Пример:
 # 1#Сидоров#Алексей#9А
 # 2#Соколов#Григорий#9А
 # Данные в БД добавляются, считаем, что уникальность реализуется с помощью ID.
 # add_records_in_dic(db: dict, rec_ID:int, data:list, mapping: dict)
-
-# 7. Импорт из CSV файла без ID
-def import_from_csv_file_without_ID():
-    value_list = model.import_from_csv_without_ID("list_of_students.csv")
-    val = model.parsing_lst_lst(value_list)
-    val_csv = model.values_from_import_csv_file_to_create_dic(val)
-    view.view_data(model.create_dic_from_import_csv_file(val_csv))
 
 

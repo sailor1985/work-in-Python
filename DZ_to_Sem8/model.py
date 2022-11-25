@@ -32,6 +32,13 @@ def import_from_file(filename: str) -> list:
     return a
 
 
+# Чтение из текстового файла последнего ID словаря. Вход:строка. Выход:число
+def import_ID_from_file(filename: str) -> int:
+    with open(filename, "r", encoding="utf-8") as data:
+        a = int(data.read())
+    return a
+
+
 # Функция cоздания записи (Фамилия, Имя, Класс) в виде словаря
 def create_record(last_name: str, first_name: str, clas: str) -> dict:
     dictionary = {'last_name': last_name, 'first_name': first_name, 'class': clas}
@@ -54,13 +61,12 @@ def import_rec_from_dic_with_ID(db: dict, rec_ID: int) -> dict:
             rendering_dic_ID(db[rec_ID])
 
 
-# Обновление имеющейся записи словаря на новую (Фамилия, Имя, Класс)
-def update_record(db: dict, new_data: dict, rec_ID: int):
+# Добавление записи (Фамилия, Имя, Класс) в словарь по ID
+def add_record(db: dict, new_data: dict, rec_ID: int):
     db[rec_ID] = new_data
     return db
 
-
-# Удаление имеющейся записи словаря по ID (Фамилия, Имя, Класс)
+# Удаление имеющейся записи словаря (Фамилия, Имя, Класс) по ID
 def delete_record(db: dict, rec_ID: int):
     db.pop(rec_ID)
     return db
@@ -112,12 +118,6 @@ def import_from_file(filename: str):
         for i, line in enumerate(reader):
             print('line[{}] = {}'.format(i, line))
             return i, line
-
-
-# Добавляем запись в импортированный словарь
-def add_records_in_import_dic(db: dict, rec_ID: int, data: list, mapping: dict) -> dict:
-    db[rec_ID] = {name: value for name, value in zip(mapping.keys(), data)}
-    return db
 
 
 # Функция заполнения БД (словаря словарей) записями с присвоением ID (ключей) из импортированного файла csv без ID
