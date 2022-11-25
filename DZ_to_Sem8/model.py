@@ -37,6 +37,13 @@ def create_record(last_name: str, first_name: str, clas: str) -> dict:
     dictionary = {'last_name': last_name, 'first_name': first_name, 'class': clas}
     return dictionary
 
+#Функция получения списка словарей, являющимися значениями для ключей (ID), для создания в дальнейшем
+# словаря словарей, импортированного из файла
+def create_rec(data:list) -> list:
+    num_lst =[]
+    for i in range(0, len(data), 3):
+        num_lst.append(create_record(data[i], data[i+1], data[i+2]))
+    return num_lst
 
 # Функция импорта из словаря записи по ID и вывода в консоль с помощью textable
 def import_rec_from_dic_with_ID(db: dict, rec_ID: int) -> dict:
@@ -60,11 +67,7 @@ def delete_record(db: dict, rec_ID: int):
 # dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
 #                2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
 #                3: {'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'} }
-#
-# for rec in list(dictionary.values()):
-#     val = ",".join(rec.values()).split(",")
-#     print(val)
-# print(list(dictionary.values()))
+
 def rendering_list(dic: dict):  # Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
     table = Texttable()
     maps = [["Фамилия", "Имя", "Класс"]]
@@ -91,48 +94,15 @@ def import_from_csv_without_ID(filename: str) -> list:  # Функция имп�
     return data
 # print(import_from_csv_without_ID("list_of_students.csv"))
 
-value_list = [['Иванов', 'Иван', '1В'], ['Петров', 'Петр', '4К'], ['Сергеев', 'Серж', '5Е']]
-def parsing_lst_lst(val: list) -> list:  # Парсинг списка списков в список строк
+# value_list = [['Иванов', 'Иван', '1В'], ['Петров', 'Петр', '4К'], ['Сергеев', 'Серж', '5Е']]
+value_list = import_from_csv_without_ID("list_of_students.csv")
+def parsing_lst_lst(val: list) -> list:  # Парсинг списка списков из csv файла (без ID) в список строк
     values = ",".join(",".join(v) for v in val)
     val_lst = values.split(",")
     return val_lst
-
-print(parsing_lst_lst(value_list))
-
-
-
-print(parsing_lst_lst(value_list))
-
-# values = ",".join(",".join(v) for v in value_list)
-# val_lst = values.split(",")
-# print(val_lst)
-# print(type(val_lst))
-def parsing_lst(value_lst: list) -> str:  # Парсинг списка записей в строку
-    value_str = ",".join(value_lst)
-    return str(value_str)
-
-# a = import_from_csv_without_ID("list_of_students.csv")
-# print(parsing_lst(a))
-
-def import_from_csv_with_ID(filename: str):  # Функция импорта из csv файла (c ID)
-    with open(filename, "r", encoding="utf-8") as f:
-        reader = csv.reader(f)
-        for row in reader:
-            a = ','.join(row)
-            b = a.split()
-            print(b)
-        return b
-
-# print(import_from_csv_with_ID("list_of_students.csv"))
-#
-# ['Иванов,Иван,1В']
-# ['Петров,Петр,4К']
-# ['Сергеев,Серж,5Е']
-# ['Сергеев,Серж,5Е']
-
-
-
-# print(parsing_lst(val))
+#print(parsing_lst_lst(value_list))
+val = parsing_lst_lst(value_list)
+print(create_rec(val))
 def import_from_file(filename: str):
     with open(filename, "r", encoding="utf-8") as f:
     #with open("list_of_students.csv", "r") as f:
@@ -142,19 +112,39 @@ def import_from_file(filename: str):
             return i, line
 
 #добавляем запись в импортированный словарь
-def add_records_in_dic(db: dict, rec_ID:int, data:list, mapping: dict) -> dict:
+def add_records_in_import_dic(db: dict, rec_ID:int, data:list, mapping: dict) -> dict:
         db[rec_ID] = {name:value for name, value in zip(mapping.keys(),data)}
         return db
 
 # data = import_from_csv_without_ID("list_of_students.csv")
 # dictionary = {'last_name': "last_name", 'first_name': "first_name", 'class': "clas"}
 # print(add_records_in_dic(data, dictionary))
-def import_dic_from_csv_file() -> dict:
-    quantity_records = view.quantity_records()
-    structure = {}
-    for key in range(1, quantity_records + 1):
-        last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
-        structure[key] = model.create_record(last_name, first_name, clas)
-        print("\n")
-    model.rendering_list(structure)
-    return structure
+def create_dic_from_import_csv_file(data:list) -> dict:
+    db ={}
+    length_dic_keys = int(len(data)/3)
+    # for key in range(1, length_dic_keys + 1):
+        # last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
+        #for key in range(0, len(data), 3):
+
+            #db[key] = create_record(last_name, first_name, clas)
+
+
+
+        # for key in range(0, len(data), 3):
+        #     db[key] = create_record(data[key], data[key+1], data[key+2])
+
+    for key in range(1, length_dic_keys + 1):
+        db[key] = {name: value for name, value in zip(mapping.keys(), data)}
+    # for key in range(1, length_dic_keys + 1):
+    # for key in range(1, length_dic_keys + 1):
+    #     db[key] = create_record(data[key-1], data[key], data[key+1])
+        mapping.keys()
+    rendering_list(db)
+    return db
+# mapping = {'last_name': "last_name", 'first_name': "first_name", 'class': "clas"}
+# dictionary = {'last_name': "last_name", 'first_name': "first_name", 'class': "clas"}
+# print(create_dic_from_import_csv_file(val))
+
+#for key in range(1, length_dic_keys + 1):
+    #db[key] = {name: value for name, value in zip(mapping.keys(), data[key:3])}
+
