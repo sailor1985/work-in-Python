@@ -2,34 +2,38 @@ from texttable import Texttable
 import csv
 
 
-# Запись в текстовый файл. Вход: словарь
-def export_to_file(filename: str, data: dict, delimiter=","):
-    with open(filename, mode="w", encoding="utf-8") as file:
-        for rec in data.values():
-            file.write(",".join(rec.values()))
-            file.write(f"\n")
+# Словарь для хардкорной проверки
+# dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
+#                2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
+#                3: {'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'} }
+
+
+# Функция конвертации импортированного слвоаря словарей в список для последующей записи в csv файл (с ID)
+def convert_lst(dict: dict) -> list:
+    id_dict = {}
+    id_list = []
+    for i in range(1, len(dict) + 1):
+        id_dict[str(i)] = ({'ID': str(i)})
+        id_dict[str(i)].update(dict[i])
+        id_list.append(id_dict.setdefault(str(i)))
+    return id_list
+
+
+# Функция экспорта в csv файл (с ID)
+def export_to_file_csv_with_ID(dict_group: dict):
+    num_list = convert_lst(dict_group)
+    with open('Students_with_ID.csv', mode='w', encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=list(num_list[0].keys()), quoting=csv.QUOTE_NONNUMERIC)
+        writer.writeheader()
+        for d in num_list:
+            writer.writerow(d)
 
 
 # Запись в текстовый файл последнего ID словаря. Вход: словарь
-def export_ID_to_file(filename: str, data: dict, delimiter=","):
+def export_ID_to_file(filename: str, data: dict):
     with open(filename, mode="w", encoding="utf-8") as file:
         one, two = data.popitem()
         file.write(str(one))
-
-
-# Дозапись в текстовый файл. Вход:список
-def rewrite_to_file(filename: str, data: list, delimiter=","):
-    with open(filename, mode="a", encoding="utf-8") as file:
-        for rec in data:
-            file.write("".join(rec))
-            file.write(f"\n")
-
-
-# Чтение из текстового файла. Вход:строка. Выход:список
-def import_from_file(filename: str) -> list:
-    with open(filename, "r", encoding="utf-8") as data:
-        a = data.read().split()
-    return a
 
 
 # Чтение из текстового файла последнего ID словаря. Вход:строка. Выход:число
@@ -49,7 +53,7 @@ def create_record(last_name: str, first_name: str, clas: str) -> dict:
 # словаря словарей, импортированного из файла
 def values_from_import_csv_file_to_create_dic(data: list) -> list:
     num_lst = []
-    for i in range(0, len(data), 3):
+    for i in range(0, len(data)-1, 3):
         num_lst.append(create_record(data[i], data[i + 1], data[i + 2]))
     return num_lst
 
@@ -66,15 +70,12 @@ def add_record(db: dict, new_data: dict, rec_ID: int):
     db[rec_ID] = new_data
     return db
 
+
 # Удаление имеющейся записи словаря (Фамилия, Имя, Класс) по ID
 def delete_record(db: dict, rec_ID: int):
     db.pop(rec_ID)
     return db
 
-
-# dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
-#                2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
-#                3: {'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'} }
 
 # Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
 def rendering_list(dic: dict):
@@ -109,15 +110,6 @@ def parsing_lst_lst(val: list) -> list:
     values = ",".join(",".join(v) for v in val)
     val_lst = values.split(",")
     return val_lst
-
-
-def import_from_file(filename: str):
-    with open(filename, "r", encoding="utf-8") as f:
-        # with open("list_of_students.csv", "r") as f:
-        reader = csv.reader(f, delimiter="\t")
-        for i, line in enumerate(reader):
-            print('line[{}] = {}'.format(i, line))
-            return i, line
 
 
 # Функция заполнения БД (словаря словарей) записями с присвоением ID (ключей) из импортированного файла csv без ID

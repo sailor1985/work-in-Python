@@ -24,3 +24,6 @@ import controller as c
 
 # 6. Добавление записи (Фамилия, Имя, Класс) в импортированный словарь по ID
 #c.add_rec_ID_to_dic(c.import_from_csv_file_without_ID())
+
+# 8. Экспорт словаря с добавленными записями в csv файл с ID и последней "ID" записи в файл Id.txt
+#c.export_add_records_of_dic_to_csv_file_with_ID()
