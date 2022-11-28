@@ -3,9 +3,9 @@ import csv
 
 
 # Словарь для хардкорной проверки
-# dictionary = {1: {'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
-#                2: {'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
-#                3: {'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'} }
+#dictionary = {1:{'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
+                #2:{'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
+                #3:{'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'}}
 
 
 # Функция конвертации импортированного слвоаря словарей в список для последующей записи в csv файл (с ID)
@@ -23,7 +23,7 @@ def convert_lst(dict: dict) -> list:
 def export_to_file_csv_with_ID(dict_group: dict):
     num_list = convert_lst(dict_group)
     with open('Students_with_ID.csv', mode='w', encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(num_list[0].keys()), quoting=csv.QUOTE_NONNUMERIC)
+        writer = csv.DictWriter(f, fieldnames=list(num_list[0].keys()), quoting=csv.QUOTE_NONNUMERIC, lineterminator="\r")
         writer.writeheader()
         for d in num_list:
             writer.writerow(d)

@@ -44,7 +44,7 @@ def delete_rec_ID(dictionary):
         view.view_ID()
 
 
-# 5. Импорт из CSV файла без ID и наполнение БД
+# 5. Импорт из CSV файла без ID в словарь
 def import_from_csv_file_without_ID():
     value_list = model.import_from_csv_without_ID("Students_without_ID.csv")
     val = model.parsing_lst_lst(value_list)
@@ -54,7 +54,7 @@ def import_from_csv_file_without_ID():
     return db
 
 
-# 6. Добавление записи (Фамилия, Имя, Класс) в импортированный словарь по ID
+# 6. Добавление записи (Фамилия, Имя, Класс) в импортированный словарь с присвоенем ID
 def add_rec_ID_to_dic(dictionary):
     last_name, first_name, clas = view.add_record_surname(), view.add_record_name(), view.add_record_class()
     new_record = model.create_record(last_name, first_name, clas)
@@ -68,14 +68,23 @@ def add_rec_ID_to_dic(dictionary):
     else:
         view.view_ID()
 
-# 7. Экспорт словаря с добавленными записями в csv файл с ID и последней "ID" записи в файл Id.txt
+# 7. Экспорт полученного выше словаря в csv файл с ID и последней "ID" записи в файл Id.txt
 def export_add_records_of_dic_to_csv_file_with_ID():
-    dictionary = add_rec_ID_to_dic(import_from_csv_file_without_ID())
-    model.export_to_file_csv_with_ID(dictionary)
-    model.export_ID_to_file("Id.txt", dictionary)
+    db1 = import_from_csv_file_without_ID()
+    add_db1 = add_rec_ID_to_dic(db1)
+    model.export_to_file_csv_with_ID(add_db1)
+    model.export_ID_to_file("Id.txt", add_db1)
+
 
 # 8. Импорт из CSV файла с ID
-# Пример:
-# 1#Сидоров#Алексей#9А
-# 2#Соколов#Григорий#9А
-# Данные в БД добавляются, считаем, что уникальность реализуется с помощью ID.
+def import_from_csv_file_with_ID():
+    value_list = model.import_from_csv_without_ID("Students_with_ID.csv")
+    val = model.parsing_lst_lst(value_list)
+    val_csv = model.values_from_import_csv_file_to_create_dic(val)
+    db = model.create_dic_from_import_csv_file(val_csv)
+    view.view_data(db)
+    return db
+
+#import_from_csv_file_with_ID()
+value_list = model.import_from_csv_without_ID("Students_with_ID.csv")
+print(value_list)
