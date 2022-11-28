@@ -79,12 +79,7 @@ def export_add_records_of_dic_to_csv_file_with_ID():
 # 8. Импорт из CSV файла с ID
 def import_from_csv_file_with_ID():
     value_list = model.import_from_csv_without_ID("Students_with_ID.csv")
-    val = model.parsing_lst_lst(value_list)
-    val_csv = model.values_from_import_csv_file_to_create_dic(val)
-    db = model.create_dic_from_import_csv_file(val_csv)
-    view.view_data(db)
-    return db
-
-#import_from_csv_file_with_ID()
-value_list = model.import_from_csv_without_ID("Students_with_ID.csv")
-print(value_list)
+    value_list.pop(0)
+    val_pars = model.parsing_lst_lst(value_list)
+    model.rendering_list_with_ID(val_pars)
+    return val_pars

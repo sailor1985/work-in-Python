@@ -77,7 +77,7 @@ def delete_record(db: dict, rec_ID: int):
     return db
 
 
-# Функция рисование таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла
+# Функция рисования таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла csv без ID
 def rendering_list(dic: dict):
     table = Texttable()
     maps = [["Фамилия", "Имя", "Класс"]]
@@ -87,6 +87,14 @@ def rendering_list(dic: dict):
     table.add_rows(maps)
     print(table.draw())
 
+# Функция рисования таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла csv c ID
+def rendering_list_with_ID(value_lst: list):
+    table = Texttable()
+    maps = [["ID", "Фамилия", "Имя", "Класс"]]
+    for i in range(0, len(value_lst) - 1, 4):
+        maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2], value_lst[i + 3]])
+    table.add_rows(maps)
+    print(table.draw())
 
 # Функция рисование таблицы с конкретной записью (по ID) на экране консоли с помощью textable
 def rendering_dic_ID(dic: dict):

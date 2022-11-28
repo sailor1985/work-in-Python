@@ -19,11 +19,14 @@ import controller as c
 # 4. DELETE
 # c.delete_rec_ID(dictionary)
 
-# 5. Импорт из CSV файла без ID в словарь
+# 5. Импорт из CSV файла без ID
 # c.import_from_csv_file_without_ID()
 
 # 6. Добавление записи (Фамилия, Имя, Класс) в импортированный словарь с присвоенем ID
 #c.add_rec_ID_to_dic(c.import_from_csv_file_without_ID())
 
 # 8. Экспорт полученного выше словаря в csv файл с ID и последней "ID" записи в файл Id.txt
-c.export_add_records_of_dic_to_csv_file_with_ID()
+#c.export_add_records_of_dic_to_csv_file_with_ID()
+
+# 9.Импорт из CSV файла c ID
+#c.import_from_csv_file_with_ID()
