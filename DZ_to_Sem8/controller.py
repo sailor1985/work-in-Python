@@ -68,6 +68,7 @@ def add_rec_ID_to_dic(dictionary):
     else:
         view.view_ID()
 
+
 # 7. Экспорт полученного выше словаря в csv файл с ID и последней "ID" записи в файл Id.txt
 def export_add_records_of_dic_to_csv_file_with_ID():
     db1 = import_from_csv_file_without_ID()

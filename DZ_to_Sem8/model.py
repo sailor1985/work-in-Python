@@ -3,9 +3,9 @@ import csv
 
 
 # Словарь для хардкорной проверки
-#dictionary = {1:{'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
-                #2:{'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
-                #3:{'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'}}
+# dictionary = {1:{'last_name': 'Иванов', 'first_name': 'Иван', 'class': '1А'},
+# 2:{'last_name': 'Петров', 'first_name': 'Сергей', 'class': '1Б'},
+# 3:{'last_name': 'Сидоров', 'first_name': 'Сидор', 'class': '1В'}}
 
 
 # Функция конвертации импортированного слвоаря словарей в список для последующей записи в csv файл (с ID)
@@ -53,7 +53,7 @@ def create_record(last_name: str, first_name: str, clas: str) -> dict:
 # словаря словарей, импортированного из файла
 def values_from_import_csv_file_to_create_dic(data: list) -> list:
     num_lst = []
-    for i in range(0, len(data)-1, 3):
+    for i in range(0, len(data) - 1, 3):
         num_lst.append(create_record(data[i], data[i + 1], data[i + 2]))
     return num_lst
 
@@ -87,6 +87,7 @@ def rendering_list(dic: dict):
     table.add_rows(maps)
     print(table.draw())
 
+
 # Функция рисования таблицы со всеми записями, экспортируемыми в файл/импортируемыми из файла csv c ID
 def rendering_list_with_ID(value_lst: list):
     table = Texttable()
@@ -95,6 +96,7 @@ def rendering_list_with_ID(value_lst: list):
         maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2], value_lst[i + 3]])
     table.add_rows(maps)
     print(table.draw())
+
 
 # Функция рисование таблицы с конкретной записью (по ID) на экране консоли с помощью textable
 def rendering_dic_ID(dic: dict):

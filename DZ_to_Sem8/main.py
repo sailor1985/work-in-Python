@@ -28,5 +28,5 @@ import controller as c
 # 8. Экспорт полученного выше словаря в csv файл с ID и последней "ID" записи в файл Id.txt
 #c.export_add_records_of_dic_to_csv_file_with_ID()
 
-# 9.Импорт из CSV файла c ID
+# 9. Импорт из CSV файла c ID
 #c.import_from_csv_file_with_ID()
