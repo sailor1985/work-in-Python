@@ -1,5 +1,6 @@
 import model, view
-
+from colorama import init
+from colorama import Fore, Back, Style
 
 # 1. Функция заполнения записями структуры хранения данных (словарь). Возвращает список строк со значениями словаря
 def add_records_in_dic() -> list:
@@ -16,7 +17,7 @@ def add_records_in_dic() -> list:
 def add_records_in_file_print_with_textable():
     records_lst = add_records_in_dic()
     model.export_to_file("telephone directory.txt", records_lst, delimiter=",")
-    view.view_data("В файл записаны следующие записи:")
+    view.view_data(Fore.RED + Back.BLUE + "В файл записаны следующие записи:")
     records_str = model.parsing_lst_for_table(records_lst)
     records = records_str.split(",")
     model.rendering_list(records)
@@ -26,7 +27,7 @@ def add_records_in_file_print_with_textable():
 # 3. Функция импорта записей из файла и их вывода на экран с помощью Textable
 def take_records_from_file_with_textable():
     records_lst = model.import_from_file("telephone directory.txt")
-    view.view_data("Из файла cчитаны следующие записи:")
+    view.view_data(Fore.RED + Back.BLUE + "Из файла cчитаны следующие записи:")
     records_str = model.parsing_lst_for_table(records_lst)
     records = records_str.split(",")
     model.rendering_list(records)
@@ -37,7 +38,7 @@ def take_records_from_file_with_textable():
 def add_records_in_file_with_available_records_with_textable():
     records_lst = add_records_in_dic()
     model.rewrite_to_file("telephone directory.txt", records_lst, delimiter=",")
-    view.view_data("В файл дозаписаны следующие записи:")
+    view.view_data(Fore.RED + Back.BLUE + "В файл дозаписаны следующие записи:")
     records_str = model.parsing_lst_for_table(records_lst)
     records = records_str.split(",")
     model.rendering_list(records)

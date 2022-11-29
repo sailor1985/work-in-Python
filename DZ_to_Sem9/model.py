@@ -1,5 +1,13 @@
 from texttable import Texttable
+from colorama import init
+from colorama import Fore, Back, Style
 
+init()
+
+
+# Fore: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.
+# Back: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.
+# Style: DIM, NORMAL, BRIGHT, RESET_ALL
 
 def export_to_file(filename: str, data: list, delimiter=","):  # Запись в текстовый файл. Вход:список
     with open(filename, mode="w", encoding="utf-8") as file:
@@ -42,4 +50,4 @@ def rendering_list(value_lst: list):  # Функция рисование таб
     for i in range(0, len(value_lst) - 1, 4):
         maps.append([value_lst[i], value_lst[i + 1], value_lst[i + 2], value_lst[i + 3]])
     table.add_rows(maps)
-    print(table.draw())
+    print(Fore.MAGENTA + Back.GREEN + table.draw())
